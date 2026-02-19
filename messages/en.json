@@ -1,0 +1,158 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "branches": "Branches",
+    "events": "Events",
+    "recipes": "Recipes",
+    "story": "Our Story",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "order": "Order Now",
+    "lang": "عربي"
+  },
+  "home": {
+    "hero_title": "Kahramana Baghdad",
+    "hero_subtitle": "The Ambassador of Baghdadi Taste in Bahrain",
+    "hero_tagline": "An authentic Iraqi experience with a modern touch",
+    "hero_cta_menu": "Order via Menu",
+    "hero_cta_talabat": "Order via Talabat",
+    "categories_title": "Explore Our Menu",
+    "categories_subtitle": "Over 109 premium Iraqi dishes awaiting you",
+    "reviews_title": "Guest Experiences",
+    "reviews_subtitle": "Testimonials we take pride in",
+    "verified": "Verified Visitor"
+  },
+  "menu": {
+    "hero_title": "Baghdad Flavors on Your Table",
+    "hero_subtitle": "Choose your favorite dish from an authentic Iraqi menu with a modern touch and unforgettable taste.",
+    "hero_cta": "Add to Cart",
+    "search_placeholder": "Search the menu…",
+    "all": "All",
+    "currency": "BHD",
+    "order_item": "Order Item"
+  },
+  "story": {
+    "hero_title": "A Tale from the Heart of Baghdad",
+    "hero_subtitle": "From Baghdad to Bahrain, a journey where we preserve traditions and add modern touches.",
+    "hero_cta": "Contact Us",
+    "founder_title": "Founder's Vision",
+    "founder_name": "Eng. Asaad Al-Jubouri",
+    "founder_bio_1": "Eng. Asaad Al-Jubouri carries a deep passion for detail, the same passion that accompanied him from the world of engineering to the world of taste. For him, food was not a commercial project, but a sincere means of conveying the culture and generosity of Baghdad to Bahrain.",
+    "founder_bio_2": "With an engineering mindset that believes quality is built and not accidental, he designed \"Kahramana Baghdad\" to be more than a restaurant: a space where Iraqi authenticity meets modern taste and upscale Bahraini hospitality.",
+    "founder_bio_3": "Today, Al-Jubouri stands behind every detail presented to the guest, from selecting ingredients to the method of presentation, to ensure that every visit is a true reflection of his passion, vision, and respect for his guests' taste.",
+    "founder_quote": "\"I didn't just build a restaurant, I brought the flavor of Baghdad to Bahrain.\"",
+    "values_title": "Our Values & Principles",
+    "values_subtitle": "The foundations upon which we built this monument",
+    "symbolism_title": "The Name's Symbolism",
+    "symbolism_text": "In the Baghdadi memory, \"Kahramana\" was not just a told tale, but a symbol of smartness, generosity, and victory through wisdom. From this deep meaning, the idea of \"Kahramana Baghdad\" was born—a restaurant that evokes the authentic spirit of Baghdad and presents it in a modern style that suits today's taste.",
+    "philosophy_title": "Philosophy of Iraqi Taste",
+    "philosophy_text": "At \"Kahramana Baghdad\", we create a complete experience that begins with the first threads of dawn by serving the finest Iraqi breakfast including bagila bil dihin, kahi and gaimar, all the way to lunch feasts of authentic Iraqi meat tashreeb and Baghdadi masgouf. We take the secrets of the inherited kitchen and carefully blend them with the elegance of Bahraini hospitality to create a flavor that combines the authenticity of the past and the sophistication of the present.",
+    "journey_title": "The Sensory Journey",
+    "journey_text": "Every dish served is an invitation to a sensory journey that starts from the old alleys of Baghdad and crosses time to reach your table in Bahrain. Here, meals are not just served, but a tale of generosity, passion, and uniqueness that makes our guests feel at home.",
+    "value_authenticity": "Authenticity",
+    "value_authenticity_text": "We preserve authentic Iraqi recipes without compromise.",
+    "value_quality": "Quality",
+    "value_quality_text": "The finest fresh, local, and imported ingredients.",
+    "value_hospitality": "Hospitality",
+    "value_hospitality_text": "We welcome you as our family, with the spirit of warm Iraqi hospitality.",
+    "value_innovation": "Innovation",
+    "value_innovation_text": "We blend heritage with modern touches that suit your refined taste."
+  },
+  "events": {
+    "hero_title": "Creating Unforgettable Memories for Your Occasions",
+    "hero_subtitle": "We provide catering services for all occasions, from weddings to meetings, with custom menus.",
+    "cta": "Book an Event",
+    "whatsapp_cta": "Contact to Book",
+    "features_title": "What We Offer",
+    "feature1": "Open buffets for large gatherings",
+    "feature2": "Private family dinners and majlis",
+    "feature3": "Live BBQ with specialist chefs",
+    "feature4": "Custom menus tailored to your taste"
+  },
+  "branches": {
+    "hero_title": "Closer to You in Bahrain",
+    "hero_subtitle": "We are happy to welcome you in Riffa and Galali, and we provide fast delivery to other areas.",
+    "open_map": "Open Map",
+    "call": "Call",
+    "order_menu": "Browse Menu",
+    "hours": "Working Hours",
+    "talk_title": "Because You Deserve the Exceptional",
+    "talk_body": "At Kahramana Baghdad, we strive to make every visit an unforgettable memory. Our team is dedicated to ensuring your comfort and attending to the finest details of your experience. Do not hesitate to contact us for any inquiries or to arrange your private reservations, as your satisfaction is our primary goal.",
+    "opens_at": "Opens at {{time}}",
+    "coming_soon": "Browse Menu",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "Where are your branches located in Bahrain?",
+          "a": "We currently have two premium locations: Riffa (Hajiyat) and Muharraq (Galali)."
+        },
+        {
+          "q": "What are your opening hours?",
+          "a": "Riffa Branch: Daily from 7:00 AM to 1:00 AM. | Galali Branch: Daily from 12:00 PM to 1:00 AM."
+        },
+        {
+          "q": "Do you provide home delivery?",
+          "a": "Yes, delivery is available to all areas of Bahrain via phone or Talabat."
+        },
+        {
+          "q": "Is there a minimum order for delivery?",
+          "a": "No, there is no minimum order requirement. Delivery fees vary by area."
+        },
+        {
+          "q": "Do you accept reservations?",
+          "a": "Yes, please contact your preferred branch directly to book for groups."
+        }
+      ]
+    }
+  },
+  "recipes": {
+    "hero_title": "Secrets of Iraqi Cuisine in Your Home",
+    "hero_subtitle": "Traditional recipes illustrated step-by-step by Kahramana Baghdad's chef.",
+    "hero_cta": "Watch Recipes",
+    "watch": "Watch Recipe",
+    "ingredients": "Ingredients",
+    "steps": "How to Make",
+    "servings": "Serves {{n}}",
+    "prep_time": "Prep Time",
+    "cook_time": "Cook Time",
+    "minutes": "min"
+  },
+  "footer": {
+    "tagline": "Authentic Baghdad flavors in Bahrain",
+    "links_title": "Quick Links",
+    "social_title": "Follow Us",
+    "hours_title": "Working Hours",
+    "rights": "All rights reserved"
+  },
+  "common": {
+    "brand": "Kahramana Baghdad",
+    "whatsapp": "WhatsApp",
+    "talabat": "Talabat",
+    "open_now": "Open Now",
+    "closed_now": "Closed Now",
+    "view_all": "View All",
+    "loading": "Loading…",
+    "back": "Back"
+  },
+  "gallery": {
+    "alt_kebab": "Charcoal-grilled authentic Iraqi kebab",
+    "alt_falafel": "Crispy and fresh Iraqi falafel",
+    "alt_baqala": "Bagila bil Dihin - Authentic Iraqi breakfast",
+    "alt_tea": "Traditional Iraqi tea with cardamom",
+    "alt_zaatar": "Zaatar manakish prepared in our stone oven",
+    "alt_liver": "Freshly prepared liver (hameesa)",
+    "alt_vine_leaves": "Authentic Iraqi Dolma (stuffed vine leaves)",
+    "alt_interior_1": "Luxury interior design of Kahramana Baghdad",
+    "alt_interior_2": "Traditional Baghdadi ambiance in Bahrain",
+    "alt_interior_3": "Architectural details inspired by Iraqi heritage",
+    "alt_tea_section": "Our authentic tea and hospitality corner",
+    "alt_signature_dish": "Signature dish from our ancient kitchen",
+    "alt_ambiance_interior": "Authentic Baghdadi atmosphere in every corner",
+    "alt_chef_special": "Chef's creations with an Iraqi touch",
+    "alt_family_seating": "Private family seating with complete privacy",
+    "alt_outdoor_seating": "Charming outdoor seating area",
+    "alt_arabic_seating": "Authentic traditional Arabic seating"
+  }
+}

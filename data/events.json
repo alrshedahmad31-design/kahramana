@@ -1,0 +1,23 @@
+[
+  {
+    "id": "open-buffet",
+    "name": { "ar": "بوفيه مفتوح", "en": "Open Buffet" },
+    "description": { "ar": "بوفيه مفتوح فاخر يناسب المناسبات الكبرى والتجمعات العائلية الكبيرة.", "en": "A premium open buffet ideal for large events and family gatherings." },
+    "image": "assets/catering/royal-arabic-banquets-qoozi-mafthool.webp",
+    "highlight": true
+  },
+  {
+    "id": "live-bbq",
+    "name": { "ar": "شواء حي", "en": "Live BBQ" },
+    "description": { "ar": "طهاة متخصصون يشوون أمام ضيوفكم على الجمر مباشرة لأجواء لا تُنسى.", "en": "Specialist chefs grilling live in front of your guests over charcoal." },
+    "image": "assets/catering/live-bbq-chef-tongs-iraqi-catering.webp",
+    "highlight": false
+  },
+  {
+    "id": "wedding-banquet",
+    "name": { "ar": "عزائم الأعراس", "en": "Wedding Banquets" },
+    "description": { "ar": "مائدة عرس فاخرة بأشهى الأطباق العراقية والمشاوي المتنوعة لإكمال فرحكم.", "en": "Luxurious wedding feast with Iraqi signature dishes and diverse grills." },
+    "image": "assets/catering/wedding-buffet-arabic-catering.webp",
+    "highlight": false
+  }
+]

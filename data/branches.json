@@ -1,0 +1,68 @@
+{
+  "brand": {
+    "name": {
+      "ar": "كهرمانة بغداد",
+      "en": "Kahramana Baghdad"
+    },
+    "website": "https://kahramanat.com/",
+    "whatsapp": "97317131413",
+    "whatsapp_url": "https://wa.me/97317131413",
+    "talabat_general": "https://www.talabat.com/ar/bahrain/kahramanat-baghdad-restaurant",
+    "talabat_hajiyat": "https://www.talabat.com/bahrain/restaurant/49105/kahramanat-baghdad-restaurant-alhajiyat?aid=1756",
+    "talabat_galali": null,
+    "social": {
+      "instagram": "https://www.instagram.com/kahramanat_b/",
+      "tiktok": "https://www.tiktok.com/@kahramanat_b",
+      "snapchat": "https://www.snapchat.com/add/Kahramanat_b",
+      "facebook": "https://www.facebook.com/kahramanat1"
+    }
+  },
+  "branches": [
+    {
+      "id": "riffa-hajiyat",
+      "name": {
+        "ar": "الرفاع (الحجيات)",
+        "en": "Riffa (Hajiyat)"
+      },
+      "address": {
+        "ar": "منطقة الحجيات، شارع الحجيات الرئيسي، البحرين",
+        "en": "Hajiyat Area, Hajiyat Main Street, Bahrain"
+      },
+      "phone": "+973 1713 1413",
+      "maps": "https://maps.app.goo.gl/LJWrynw5VFW2iFRN6",
+      "coords": {
+        "lat": 26.1358149,
+        "lng": 50.5748089
+      },
+      "hours": {
+        "ar": "يومياً من 7:00 ص إلى 1:00 بعد منتصف الليل",
+        "en": "Daily from 7:00 AM to 1:00 AM"
+      },
+      "opens": "07:00",
+      "closes": "01:00"
+    },
+    {
+      "id": "muharraq-galali",
+      "name": {
+        "ar": "المحرق (قلالي)",
+        "en": "Muharraq (Galali)"
+      },
+      "address": {
+        "ar": "الشارع الرئيسي، قلالي، البحرين",
+        "en": "Main Street, Galali, Bahrain"
+      },
+      "phone": "+973 1713 1213",
+      "maps": "https://maps.app.goo.gl/PtyQwA7pPsp5jCc48",
+      "coords": {
+        "lat": 26.2767468,
+        "lng": 50.6571751
+      },
+      "hours": {
+        "ar": "يومياً من 12:00 م إلى 1:00 بعد منتصف الليل",
+        "en": "Daily from 12:00 PM to 1:00 AM"
+      },
+      "opens": "12:00",
+      "closes": "01:00"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "baqala-bil-dihin",
+    "name": { "ar": "باقلاء بالدهن", "en": "Baqala bil Dihin" },
+    "description": { "ar": "طبق بغدادي تقليدي — فول أخضر مع الدهن والبيض.", "en": "Traditional Baghdadi dish — broad beans with clarified butter and eggs." },
+    "image": "assets/recipes/baqala-bil-dihin.webp",
+    "video": "assets/recipes/baqala-bil-dihin.mp4",
+    "servings": 4,
+    "prepTime": 10,
+    "cookTime": 20,
+    "ingredients": {
+      "ar": ["500 جم فول أخضر", "100 جم دهن حيواني", "3 بيضات", "ملح وفلفل أسود حسب الرغبة", "عصير ليمونة واحدة"],
+      "en": ["500g broad beans", "100g clarified butter (samn)", "3 eggs", "Salt and black pepper to taste", "Juice of 1 lemon"]
+    },
+    "steps": {
+      "ar": ["اغسل الفول جيدًا وانزع القشرة.", "سخّن الدهن في مقلاة على نار متوسطة.", "أضف الفول وحرّكه لمدة 5 دقائق.", "أضف الملح والفلفل وعصير الليمون.", "اكسر البيضات فوق الفول وحرّكها حتى تنضج.", "قدّمه ساخنًا مع خبز سمون."],
+      "en": ["Wash broad beans and peel.", "Heat clarified butter in a pan over medium heat.", "Add beans and stir for 5 minutes.", "Add salt, pepper and lemon juice.", "Crack eggs over beans and stir until cooked.", "Serve hot with samoon bread."]
+    }
+  },
+  {
+    "id": "makhlama-iraqi",
+    "name": { "ar": "مخلمة عراقية", "en": "Iraqi Makhlama" },
+    "description": { "ar": "إفطار عراقي دافئ — بيض ولحم بالطماطم والبصل.", "en": "Warm Iraqi breakfast — eggs with meat, tomatoes and onions." },
+    "image": "assets/recipes/makhlama-iraqi.webp",
+    "video": "assets/recipes/makhlama-iraqi.mp4",
+    "servings": 3,
+    "prepTime": 10,
+    "cookTime": 25,
+    "ingredients": {
+      "ar": ["250 جم لحم مفروم", "4 بيضات", "2 طماطم مقطعة", "بصلة كبيرة", "ملعقتان زيت", "ملح وبهارات"],
+      "en": ["250g minced meat", "4 eggs", "2 chopped tomatoes", "1 large onion", "2 tbsp oil", "Salt and spices"]
+    },
+    "steps": {
+      "ar": ["تقلى البصل بالزيت حتى تذهب.", "يضاف اللحم ويُقلى حتى ينضج.", "تضاف الطماطم والبهارات.", "تُكسر البيضات وتُحرك مع الخليط.", "يُقدّم ساخنًا."],
+      "en": ["Fry onion in oil until golden.", "Add minced meat and cook through.", "Add tomatoes and spices.", "Crack in eggs and stir into the mix.", "Serve hot."]
+    }
+  },
+  {
+    "id": "tabsi-iraqi",
+    "name": { "ar": "طبسي عراقي", "en": "Iraqi Tabsi" },
+    "description": { "ar": "يخنة الباذنجان العراقية بالطماطم والبطاطا.", "en": "Iraqi eggplant stew with tomatoes and potatoes." },
+    "image": "assets/recipes/tabsi-iraqi.webp",
+    "video": "assets/recipes/tabsi-iraqi.mp4",
+    "servings": 4,
+    "prepTime": 15,
+    "cookTime": 40,
+    "ingredients": {
+      "ar": ["2 حبة باذنجان كبيرة", "2 بطاطا", "3 طماطم", "250 جم لحم", "بصل وثوم", "ملح وبهارات وزيت"],
+      "en": ["2 large eggplants", "2 potatoes", "3 tomatoes", "250g meat", "Onion and garlic", "Salt, spices and oil"]
+    },
+    "steps": {
+      "ar": ["تُقلى البطاطا والباذنجان حتى تذهب.", "تُطهى اللحمة مع البصل والثوم.", "تُرتب الطبقات في وعاء: باذنجان، بطاطا، لحم، طماطم.", "تُضاف البهارات والماء وتُغطى وتُطهى ساعة.", "تُقدّم مع الأرز."],
+      "en": ["Fry potatoes and eggplant until golden.", "Cook meat with onion and garlic.", "Layer in a pot: eggplant, potato, meat, tomatoes.", "Add spices and water, cover and cook 1 hour.", "Serve with rice."]
+    }
+  }
+]

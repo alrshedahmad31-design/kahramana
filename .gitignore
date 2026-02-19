@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+
+# Next.js build output
+.next
+out
+build
+dist
+
+# Environment & secrets
+.env*
+
+# Deployment
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code (local AI settings — not for team sharing)
+.claude/

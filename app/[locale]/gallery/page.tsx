@@ -1,0 +1,164 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import Hero from "@/components/ui/Hero";
+import SectionTitle from "@/components/ui/SectionTitle";
+import GalleryGrid from "@/components/gallery/GalleryGrid";
+
+export async function generateMetadata(
+    { params }: { params: { locale: string } }
+): Promise<Metadata> {
+    const { locale } = params;
+    return locale === "ar"
+        ? { title: "معرض الصور الفاخر", description: "استمتع بمشاهدة أفخم تفاصيل كهرمانة بغداد — رحلة بصرية بين التراث والحداثة." }
+        : { title: "Luxury Gallery", description: "Experience the luxury of Kahramana Baghdad — a visual journey between heritage and modernity." };
+}
+
+export default async function GalleryPage({ params }: { params: { locale: string } }) {
+    const { locale } = params;
+    const t = await getTranslations("gallery");
+
+    const galleryItems = [
+        // BLOCK 1: Hero Intro (Major Arabic Seating)
+        {
+            src: "/assets/seating/arabic-floor-seating-majlis-iraqi-restaurant.webp",
+            alt: t("alt_arabic_seating"),
+            className: "md:col-span-2 md:row-span-2",
+            priority: true
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/kebab.webp",
+            alt: t("alt_kebab"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/seating/outdoor-seating-baghdadi-style.webp",
+            alt: t("alt_outdoor_seating"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+
+        // BLOCK 2: Wide Feature (Family Dining)
+        {
+            src: "/assets/seating/private-family-dining-iraqi-restaurant.webp",
+            alt: t("alt_family_seating"),
+            className: "md:col-span-2 md:row-span-1"
+        },
+
+        // BLOCK 3: Tall Feature (Tea Culture)
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/tea_section.webp",
+            alt: t("alt_tea_section"),
+            className: "md:col-span-1 md:row-span-2"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/baqala-bil-dihin.webp",
+            alt: t("alt_baqala"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+
+        // BLOCK 4: Dynamic Duo (Interior Ambiance)
+        {
+            src: "/assets/kahramanat_photos/chef-made/tea.webp",
+            alt: t("alt_tea"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior.webp",
+            alt: t("alt_interior_1"),
+            className: "md:col-span-2 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/falafel.webp",
+            alt: t("alt_falafel"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+
+        // BLOCK 5: The "Fine Dining" Look (Outdoor Details)
+        {
+            src: "/assets/kahramanat_photos/chef-made/liver.webp",
+            alt: t("alt_liver"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior4.webp",
+            alt: t("alt_outdoor_seating"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/stuffed_vine_leaves.webp",
+            alt: t("alt_vine_leaves"),
+            className: "md:col-span-2 md:row-span-2"
+        },
+
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior5.webp",
+            alt: t("alt_family_seating"),
+            className: "md:col-span-2 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/DSC06211-819x1024.webp",
+            alt: t("alt_signature_dish"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior3.webp",
+            alt: t("alt_interior_3"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/DSC06381-scaled.webp",
+            alt: t("alt_chef_special"),
+            className: "md:col-span-2 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior6.webp",
+            alt: t("alt_ambiance_interior"),
+            className: "md:col-span-1 md:row-span-1"
+        }
+    ];
+
+    return (
+        <main className="bg-ebony-black min-h-screen pb-20">
+            <Hero
+                title={locale === "ar" ? "معرض الصور" : "Gallery"}
+                subtitle={locale === "ar" ? "قصة تُروى بالألوان والمطعم" : "A story told in colors and flavors"}
+                imageUrl="/assets/kahramanat_photos/pictures_interior/pictures_interior5.webp"
+                size="sm"
+            />
+
+            <section className="max-w-screen-2xl mx-auto px-6 py-24">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+                    <div className="max-w-2xl">
+                        <SectionTitle
+                            title={locale === "ar" ? "فخامة التفاصيل" : "Luxury in Detail"}
+                            subtitle={locale === "ar" ? "حيث يلتقي عبق التاريخ مع رقي الضيافة المعاصرة" : "Where heritage meets contemporary hospitality excellence"}
+                            noPadding
+                        />
+                    </div>
+                    <div className="hidden md:block">
+                        <div className="flex gap-2 text-gold-primary/40 text-xs font-black uppercase tracking-[0.4em] leading-none mb-4">
+                            <span>Ambiance</span>
+                            <span className="w-12 h-px bg-gold-primary/20 self-center" />
+                            <span>Authenticity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <GalleryGrid items={galleryItems} />
+
+                <div className="mt-32 text-center relative">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold-primary/10 to-transparent" />
+                    <div className="relative inline-block bg-ebony-black px-12">
+                        <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.5em] mb-4">
+                            Kahramana Baghdad
+                        </p>
+                        <p className="text-white/50 text-base max-w-xl italic mx-auto font-medium">
+                            {locale === "ar"
+                                ? "كل زاوية تروي قصة، وكل طبق هو فصل من فصول الجودة."
+                                : "Every corner tells a story, and every dish is a chapter of quality."}
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+}
