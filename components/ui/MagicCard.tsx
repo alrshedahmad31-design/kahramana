@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useRef, useState, useCallback } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { useMotionValue, useSpring, motion, useMotionTemplate } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { MOTION } from "@/lib/constants";
 
 interface MagicCardProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
@@ -15,7 +16,7 @@ export function MagicCard({
     children,
     className,
     gradientSize = 250,
-    gradientColor = "rgba(197, 160, 89, 0.15)", // Premium Gold tint
+    gradientColor = "var(--spotlight-gold)", // Centralized token
     gradientOpacity = 0.8,
     ...props
 }: MagicCardProps) {
@@ -25,9 +26,9 @@ export function MagicCard({
     const mouseX = useMotionValue(-gradientSize);
     const mouseY = useMotionValue(-gradientSize);
 
-    // Smooth out the movement
-    const springX = useSpring(mouseX, { stiffness: 300, damping: 30 });
-    const springY = useSpring(mouseY, { stiffness: 300, damping: 30 });
+    // Smooth out the movement using spring constants
+    const springX = useSpring(mouseX, MOTION.spring);
+    const springY = useSpring(mouseY, MOTION.spring);
 
     const handleMouseMove = useCallback(
         (e: React.MouseEvent<HTMLDivElement>) => {
@@ -56,14 +57,14 @@ export function MagicCard({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={cn(
-                "group relative flex size-full overflow-hidden rounded-xl border border-white/5 bg-ebony-darker text-white",
+                "group relative flex size-full overflow-hidden rounded-2 border border-1 [border-color:var(--border-1)] bg-walnut text-white",
                 className
             )}
             {...props}
         >
             {/* Spotlight Layer */}
             <motion.div
-                className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-[var(--motion-slow)] group-hover:opacity-100"
                 style={{
                     background,
                     opacity: isHovered ? gradientOpacity : 0,
@@ -74,7 +75,7 @@ export function MagicCard({
             <div className="relative z-10 w-full">{children}</div>
 
             {/* Subtle border shine effect */}
-            <div className="pointer-events-none absolute inset-0 rounded-xl border border-white/5 group-hover:border-gold-muted/20 transition-colors duration-500" />
+            <div className="pointer-events-none absolute inset-0 rounded-2 border border-1 [border-color:var(--border-1)] group-hover:[border-color:color-mix(in-srgb,var(--color-gold),transparent,80%)] transition-colors duration-[var(--motion-slow)]" />
         </div>
     );
 }

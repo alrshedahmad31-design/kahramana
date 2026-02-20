@@ -35,7 +35,7 @@ export default async function MenuPage({ params }: { params: { locale: string } 
             return {
               id,
               name: group.category,
-              icon: "UtensilsCrossed", // default icon
+              icon: "restaurant_menu", // Standardized name
             };
           });
 

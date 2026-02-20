@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Icon from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 interface ModalContextProps {
@@ -65,51 +65,55 @@ export function ModalBody({
 
     return (
         <AnimatePresence>
-            {open && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                >
-                    {/* Backdrop */}
-                    <motion.div
+            {open ? (
+                <div className="fixed inset-0 z-[var(--z-modal)] flex items-center justify-center p-[var(--space-4)]">
+                    <motion.button
+                        type="button"
+                        aria-label="Close modal"
+                        onClick={() => setOpen(false)}
+                        className="absolute inset-0 bg-black/80 backdrop-blur-md"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={() => setOpen(false)}
-                        className="absolute inset-0 bg-ebony-black/80 backdrop-blur-md"
                     />
 
-                    {/* Modal Content container */}
                     <motion.div
-                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        role="dialog"
+                        aria-modal="true"
                         className={cn(
-                            "relative z-50 w-full max-w-2xl max-h-[90dvh] overflow-y-auto rounded-3xl border border-white/10 bg-ebony-darker shadow-2xl",
+                            "relative z-[calc(var(--z-modal)+1)] w-full max-w-2xl overflow-hidden rounded-[var(--radius-3xl)] border-[var(--border-thin)] border-white/10 bg-[var(--bg-primary)] shadow-[var(--shadow-3)]",
                             className
                         )}
+                        initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 16, scale: 0.98 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
                         <button
+                            type="button"
                             onClick={() => setOpen(false)}
-                            className="absolute top-4 right-4 z-[60] p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-all"
+                            className="absolute right-[var(--space-4)] top-[var(--space-4)] z-[calc(var(--z-modal)+2)] inline-flex h-[var(--space-12)] w-[var(--space-12)] items-center justify-center rounded-pill bg-white/5 text-white/60 transition hover:bg-white/10 hover:text-white"
+                            aria-label="Close"
                         >
-                            <X className="size-5" />
+                            <Icon name="close" size="sm" />
                         </button>
-
-                        <div className="p-8">{children}</div>
+                        {children}
                     </motion.div>
-                </motion.div>
-            )}
+                </div>
+            ) : null}
         </AnimatePresence>
     );
 }
 
-export function ModalContent({ children }: { children: React.ReactNode }) {
-    return <div>{children}</div>;
+export function ModalContent({
+    children,
+    className,
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    return <div className={cn("p-[var(--space-6)]", className)}>{children}</div>;
 }
 
 export function ModalFooter({
@@ -120,7 +124,7 @@ export function ModalFooter({
     className?: string;
 }) {
     return (
-        <div className={cn("mt-8 flex justify-end gap-4", className)}>
+        <div className={cn("mt-[var(--space-8)] flex justify-end gap-[var(--space-4)]", className)}>
             {children}
         </div>
     );

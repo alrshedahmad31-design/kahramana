@@ -12,7 +12,7 @@ export async function generateMetadata(
     : { title: "Recipes", description: "Learn the secrets of Kahramana Baghdad recipes — how to prepare kubba, biryani and the most famous Iraqi dishes at home." };
 }
 import recipesData from "@/data/recipes.json";
-import { List, ListOrdered } from "lucide-react";
+import Icon from "@/components/ui/Icon";
 
 export default async function RecipesPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
@@ -28,8 +28,8 @@ export default async function RecipesPage({ params }: { params: { locale: string
         size="sm"
       />
 
-      <div id="recipes-list" className="px-4 max-w-screen-lg mx-auto mt-10 pb-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+      <div id="recipes-list" className="px-[var(--space-4)] max-w-screen-lg mx-auto mt-[var(--space-7)] pb-[var(--space-8)]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[var(--space-4)] mb-[var(--space-8)]">
           {recipesData.map((recipe) => (
             <RecipeCard
               key={recipe.id} recipe={recipe} locale={locale}
@@ -41,40 +41,40 @@ export default async function RecipesPage({ params }: { params: { locale: string
         {recipesData.map((recipe) => (
           <article
             key={recipe.id} id={recipe.id}
-            className="mb-8 p-6 rounded-3xl border scroll-mt-20"
+            className="mb-[var(--space-8)] p-[var(--space-6)] rounded-[var(--radius-3xl)] border scroll-mt-20"
             style={{ background: "var(--color-surface)", borderColor: "var(--color-border)", boxShadow: "var(--shadow-1)" }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1 h-8 rounded-full" style={{ background: "var(--brand-gold)" }} />
-              <h2 className="text-xl font-black" style={{ color: "var(--color-text)" }}>
+            <div className="flex items-center gap-[var(--space-3)] mb-[var(--space-6)]">
+              <div className="w-[var(--border-thick)] h-[var(--space-8)] rounded-pill" style={{ background: "var(--color-gold)" }} />
+              <h2 className="text-[var(--fs-500)] font-black" style={{ color: "var(--color-text)" }}>
                 {locale === "ar" ? recipe.name.ar : recipe.name.en}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[var(--space-6)]">
               <div>
-                <h3 className="flex items-center gap-2 text-sm font-bold mb-3" style={{ color: "var(--brand-spice)" }}>
-                  <List size={16} strokeWidth={2} /> {t("ingredients")}
+                <h3 className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)] font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
+                  <Icon name="list" size="sm" /> {t("ingredients")}
                 </h3>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-[var(--space-2)]">
                   {(locale === "ar" ? recipe.ingredients.ar : recipe.ingredients.en).map((ing, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm" style={{ color: "var(--color-text)" }}>
-                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--brand-gold)" }} />
+                    <li key={i} className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)]" style={{ color: "var(--color-text)" }}>
+                      <span className="w-1.5 h-1.5 rounded-pill shrink-0" style={{ background: "var(--color-gold)" }} />
                       {ing}
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="flex items-center gap-2 text-sm font-bold mb-3" style={{ color: "var(--base-saddle)" }}>
-                  <ListOrdered size={16} strokeWidth={2} /> {t("steps")}
+                <h3 className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)] font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
+                  <Icon name="format_list_numbered" size="sm" /> {t("steps")}
                 </h3>
-                <ol className="flex flex-col gap-3">
+                <ol className="flex flex-col gap-[var(--space-3)]">
                   {(locale === "ar" ? recipe.steps.ar : recipe.steps.en).map((step, i) => (
-                    <li key={i} className="flex gap-3 text-sm">
+                    <li key={i} className="flex gap-[var(--space-3)] text-[var(--fs-300)]">
                       <span
-                        className="w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-xs font-black"
-                        style={{ background: "var(--brand-spice)", color: "#fff" }}
+                        className="w-[var(--space-6)] h-[var(--space-6)] rounded-pill shrink-0 flex items-center justify-center text-[var(--fs-200)] font-black"
+                        style={{ background: "var(--color-saddle)", color: "var(--text-body)" }}
                       >
                         {i + 1}
                       </span>
@@ -84,7 +84,7 @@ export default async function RecipesPage({ params }: { params: { locale: string
                 </ol>
               </div>
             </div>
-            <video className="mt-6 w-full rounded-2xl" src={`/${recipe.video}`} poster={`/${recipe.image}`} controls preload="none" />
+            <video className="mt-[var(--space-6)] w-full rounded-[var(--radius-2xl)]" src={`/${recipe.video}`} poster={`/${recipe.image}`} controls preload="none" />
           </article>
         ))}
       </div>

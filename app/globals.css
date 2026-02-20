@@ -119,10 +119,10 @@ video {
    FOCUS — WCAG AA
    ================================================================= */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--base-saddle);
+  outline: var(--focus-outline);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--color-focus);
-  border-radius: var(--radius-sm);
+  box-shadow: var(--glow-gold);
+  border-radius: var(--radius-1);
 }
 
 /* =================================================================
@@ -146,6 +146,11 @@ video {
   font-size: var(--icon-size-md);
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   transition: font-variation-settings var(--motion-fast) var(--ease-std);
+}
+
+.icon-xs {
+  font-size: var(--icon-size-xs);
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
 }
 
 .icon-sm {
@@ -256,16 +261,7 @@ video {
    ================================================================= */
 .liquid-gold,
 .section-title-gold {
-  background: linear-gradient(110deg,
-      #6B4F1A 0%,
-      #8A6E2F 15%,
-      #C5A059 30%,
-      #FDF0A0 45%,
-      #FFFFFF 50%,
-      #FDF0A0 55%,
-      #C5A059 70%,
-      #8A6E2F 85%,
-      #6B4F1A 100%);
+  background: var(--gold-gradient-liquid);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -277,13 +273,13 @@ video {
 
 /* Hero titles — subtle shadow (dark bg) */
 .liquid-gold {
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 2px 8px color-mix(in srgb, black 60%, transparent));
 }
 
 /* Section titles — richer glow + text-shadow shimmer */
 .section-title-gold {
   filter:
-    drop-shadow(0 0 15px rgba(197, 160, 89, 0.65)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    drop-shadow(0 0 10px color-mix(in srgb, var(--gold-stop-max), transparent 30%)) drop-shadow(0 2px 4px color-mix(in srgb, black 50%, transparent));
 }
 
 @keyframes liquid-gold-flow {
@@ -294,4 +290,15 @@ video {
   100% {
     background-position: 100% center;
   }
+}
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam calc(var(--duration) * 1s) infinite linear;
+  animation-delay: calc(var(--delay) * 1s);
 }

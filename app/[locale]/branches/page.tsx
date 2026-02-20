@@ -45,14 +45,14 @@ export default async function BranchesPage({ params }: { params: { locale: strin
       />
 
       {/* "Let's Talk" Intro Section - Once at the top */}
-      <section className="bg-[var(--color-surface)] py-16 border-b relative overflow-hidden" style={{ borderColor: 'var(--color-border)' }}>
+      <section className="bg-[var(--color-surface)] py-[var(--space-16)] border-b relative overflow-hidden" style={{ borderColor: 'var(--color-border)' }}>
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale invert"
-          style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: '400px' }} />
+          style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
 
-        <div className="max-w-screen-md mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl font-black mb-6" style={{ color: "var(--color-text)" }}>{labels.talk_title}</h2>
-          <p className="text-lg leading-relaxed opacity-90 text-justify" style={{ color: "var(--color-text-muted)" }}>
+        <div className="max-w-screen-md mx-auto px-[var(--space-6)] text-center relative z-[var(--z-base)]">
+          <h2 className="text-[var(--fs-800)] font-black mb-[var(--space-6)]" style={{ color: "var(--color-text)" }}>{labels.talk_title}</h2>
+          <p className="text-[var(--fs-300)] leading-relaxed opacity-90 text-justify" style={{ color: "var(--color-text-muted)" }}>
             {labels.talk_body}
           </p>
         </div>
@@ -70,34 +70,34 @@ export default async function BranchesPage({ params }: { params: { locale: strin
         ))}
       </div>
 
-      <div className="px-6 max-w-screen-xl mx-auto py-20 pb-32">
+      <div className="px-[var(--space-6)] max-w-screen-xl mx-auto py-[var(--space-16)] pb-[var(--space-16)]">
         {/* FAQ Section */}
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 liquid-gold">
+          <div className="text-center mb-[var(--space-12)]">
+            <h2 className="text-[var(--fs-700)] md:text-[var(--fs-900)] font-black mb-[var(--space-4)] liquid-gold">
               {t.raw("faq.title")}
             </h2>
-            <div className="w-16 h-1 bg-[var(--base-gold)] mx-auto rounded-full" />
+            <div className="w-[var(--space-16)] h-1 bg-[var(--color-gold)] mx-auto rounded-pill" />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-[var(--space-4)]">
             {(t.raw("faq.items") as any[]).map((item, i) => (
               <details
                 key={i}
-                className="group p-6 rounded-3xl border transition-all hover:border-[var(--base-gold)]/40 bg-[var(--color-surface)] relative overflow-hidden"
+                className="group p-[var(--space-6)] rounded-[var(--radius-3xl)] border transition-colors hover:border-[var(--color-gold)]/40 bg-[var(--color-surface)] relative overflow-hidden"
                 style={{ borderColor: "var(--color-border)" }}
               >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none grayscale invert"
-                  style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: '400px' }} />
+                  style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
 
-                <summary className="flex items-center justify-between cursor-pointer font-bold text-lg list-none relative z-10">
-                  <span className="pe-8">{item.q}</span>
-                  <span className="ms-2 transition-transform group-open:rotate-180 opacity-60">
+                <summary className="flex items-center justify-between cursor-pointer font-bold text-[var(--fs-300)] list-none relative z-[var(--z-base)]">
+                  <span className="pe-[var(--space-8)]">{item.q}</span>
+                  <span className="ms-[var(--space-2)] transition-transform group-open:rotate-180 opacity-60">
                     <Icon name="expand_more" size="sm" />
                   </span>
                 </summary>
-                <div className="pt-4 text-[var(--color-text-muted)] leading-relaxed text-justify relative z-10">
+                <div className="pt-[var(--space-4)] text-[var(--color-text-muted)] leading-relaxed text-justify relative z-[var(--z-base)]">
                   {item.a}
                 </div>
               </details>

@@ -6,19 +6,16 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/useScroll";
-import {
-  Home, UtensilsCrossed, MapPin, Sparkles, ChefHat,
-  Globe, Menu, X, Bike, BookOpen, Image as ImageLucide
-} from "lucide-react";
+import Icon from "@/components/ui/Icon";
 
 const NAV_ITEMS = [
-  { key: "home", path: "", Icon: Home },
-  { key: "menu", path: "/menu", Icon: UtensilsCrossed },
-  { key: "story", path: "/our-story", Icon: BookOpen },
-  { key: "recipes", path: "/recipes", Icon: ChefHat },
-  { key: "events", path: "/events", Icon: Sparkles },
-  { key: "gallery", path: "/gallery", Icon: ImageLucide },
-  { key: "branches", path: "/branches", Icon: MapPin },
+  { key: "home", path: "" },
+  { key: "menu", path: "/menu" },
+  { key: "story", path: "/our-story" },
+  { key: "recipes", path: "/recipes" },
+  { key: "events", path: "/events" },
+  { key: "gallery", path: "/gallery" },
+  { key: "branches", path: "/branches" },
 ] as const;
 
 export default function Header() {
@@ -40,7 +37,6 @@ export default function Header() {
 
   const switchLocale = () => {
     const other = locale === "ar" ? "en" : "ar";
-    // Using regex to robustly replace the locale segment
     const newPath = pathname.replace(`/${locale}`, `/${other}`);
     router.push(newPath);
   };
@@ -55,22 +51,22 @@ export default function Header() {
       {/* ── Top Bar ────────────────────────────────────────────── */}
       <header
         className={cn(
-          "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-          scrolled ? "shadow-lg bg-[var(--bg-primary)]/95 backdrop-blur-xl py-1" : "shadow-none bg-transparent py-2"
+          "fixed top-0 inset-x-0 z-nav transition-[background-color,padding,box-shadow,height,border-color] duration-[var(--motion-slow)]",
+          scrolled ? "shadow-1 bg-primary/95 backdrop-blur-xl py-[var(--space-1)]" : "shadow-none bg-transparent py-[var(--space-2)]"
         )}
         style={{
-          borderBottom: `1px solid ${scrolled ? "var(--border-subtle)" : "transparent"}`,
-          height: scrolled ? "var(--nav-top-h)" : "calc(var(--nav-top-h) + 8px)",
+          borderBottom: `1px solid ${scrolled ? "var(--border-1)" : "transparent"}`,
+          height: scrolled ? "var(--nav-top-h, 60px)" : "calc(var(--nav-top-h, 60px) + 8px)",
         }}
       >
-        <div className="max-w-screen-xl mx-auto h-full flex items-center justify-between px-4 md:px-6">
+        <div className="max-w-screen-xl mx-auto h-full flex items-center justify-between px-[var(--space-4)] md:px-[var(--space-6)]">
 
           {/* Logo */}
           <Link
             href={`/${locale}`}
             className="flex items-center no-underline group shrink-0"
           >
-            <div className="relative w-14 h-14 transition-transform group-hover:scale-105 duration-300">
+            <div className="relative w-[var(--space-7)] h-[var(--space-7)] transition-transform group-hover:scale-105 duration-[var(--motion-slow)]">
               <Image
                 src="/assets/brand/logo.webp"
                 alt="Kahramana"
@@ -94,10 +90,10 @@ export default function Header() {
                     key={key}
                     href={`/${locale}${path}`}
                     className={cn(
-                      "relative px-4 py-2 rounded-full text-[0.8125rem] font-bold no-underline transition-all duration-200",
+                      "relative px-4 py-2 rounded-pill fs-300 fontWeight-bold no-underline transition-[background-color,color,transform] duration-2",
                       active
-                        ? "text-white bg-[var(--brand-gold)] shadow-md active:scale-95"
-                        : "text-[var(--text-on-dark)] hover:bg-white/10"
+                        ? "text-white bg-gold shadow-1 active:scale-95"
+                        : "text-white/80 hover:bg-white/10"
                     )}
                   >
                     {t(key as any)}
@@ -112,10 +108,10 @@ export default function Header() {
             {/* Lang */}
             <button
               onClick={switchLocale}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 rounded-full text-[0.8125rem] font-bold border border-[var(--border-subtle)] bg-[var(--bg-tertiary)]/40 text-[var(--text-body)] transition-all hover:bg-white/10 active:scale-95"
-              style={{ height: 48 }}
+              className="hidden sm:inline-flex items-center gap-2 px-4 rounded-pill fs-300 fontWeight-bold border border-1 bg-surface text-body transition-[background-color,transform] duration-2 hover:bg-white/10 active:scale-95"
+              style={{ height: "var(--tap-min)" }}
             >
-              <Globe size={16} strokeWidth={2} />
+              <Icon name="language" size="sm" />
               {t("lang")}
             </button>
 
@@ -123,51 +119,51 @@ export default function Header() {
             <a
               href="https://www.talabat.com/ar/bahrain/kahramanat-baghdad-restaurant"
               target="_blank" rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 font-bold no-underline rounded-full bg-[var(--brand-gold)] text-[var(--bg-primary)] transition-all hover:brightness-105 active:scale-95 shadow-md"
+              className="hidden sm:inline-flex items-center gap-2 fontWeight-bold no-underline rounded-pill bg-gold text-coffee transition-[filter,transform,box-shadow] duration-2 hover:brightness-105 active:scale-95 shadow-1"
               style={{
-                height: 48,
+                height: "var(--tap-min)",
                 paddingInline: "var(--space-6)",
-                fontSize: "0.8125rem",
+                fontSize: "var(--fs-300)",
               }}
             >
-              <Bike size={20} strokeWidth={2.5} />
+              <Icon name="delivery_dining" />
               {t("order")}
             </a>
 
             {/* Cart Button */}
             <button
               id="cart-toggle"
-              className="inline-flex items-center justify-center rounded-full transition-colors hover:bg-white/10 active:scale-95 shadow-sm relative"
+              className="inline-flex items-center justify-center rounded-pill transition-[background-color,transform] duration-2 hover:bg-white/10 active:scale-95 shadow-1 relative"
               style={{
-                width: 48,
-                height: 48,
-                color: "var(--brand-gold)",
-                background: "var(--bg-gold-tint)",
-                border: "1px solid var(--border-subtle)"
+                width: "var(--tap-min)",
+                height: "var(--tap-min)",
+                color: "var(--color-gold)",
+                background: "var(--bg-muted)",
+                border: "1px solid var(--border-1)"
               }}
               // @ts-ignore
               onClick={() => window.openCart?.()}
               aria-label={locale === "ar" ? "حقيبة التسوق" : "Shopping Cart"}
             >
-              <UtensilsCrossed size={24} strokeWidth={1.75} />
-              <span className="cart-badge absolute -top-1 -right-1 flex items-center justify-center bg-[var(--brand-gold)] text-[var(--bg-secondary)] text-[10px] font-bold w-5 h-5 rounded-full border-2 border-[var(--bg-secondary)] pointer-events-none hidden">0</span>
+              <Icon name="shopping_basket" />
+              <span className="cart-badge absolute -top-1 -right-1 flex items-center justify-center bg-gold text-dark-walnut text-[10px] fontWeight-black w-[var(--space-4)] h-[var(--space-4)] rounded-pill border-2 border-dark-walnut pointer-events-none hidden">0</span>
             </button>
 
             {/* Hamburger (Mobile only) */}
             <button
-              className="md:hidden inline-flex items-center justify-center rounded-full transition-colors hover:bg-white/10 active:scale-95 shadow-sm"
+              className="md:hidden inline-flex items-center justify-center rounded-pill transition-[background-color,transform] duration-2 hover:bg-white/10 active:scale-95 shadow-1"
               style={{
-                width: 48,
-                height: 48,
-                color: "var(--brand-gold)",
-                background: "var(--bg-tertiary)",
-                border: "1px solid var(--border-subtle)"
+                width: "var(--tap-min)",
+                height: "var(--tap-min)",
+                color: "var(--color-gold)",
+                background: "var(--bg-surface)",
+                border: "1px solid var(--border-1)"
               }}
               onClick={() => setOpen(true)}
               aria-label={locale === "ar" ? "فتح القائمة" : "Open menu"}
               aria-expanded={open}
             >
-              <Menu size={24} strokeWidth={1.75} />
+              <Icon name="menu" />
             </button>
           </div>
         </div>
@@ -177,10 +173,10 @@ export default function Header() {
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 z-[60] md:hidden transition-opacity duration-300",
+          "fixed inset-0 z-drawer md:hidden transition-opacity duration-3",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
-        style={{ background: "color-mix(in srgb, var(--bg-primary) 70%, transparent)", backdropFilter: "blur(8px)" }}
+        style={{ background: "color-mix(in srgb, var(--coffee-bean) 70%, transparent)", backdropFilter: "blur(8px)" }}
         onClick={() => setOpen(false)}
       />
 
@@ -188,21 +184,21 @@ export default function Header() {
       <div
         role="dialog" aria-modal="true"
         className={cn(
-          "fixed top-0 bottom-0 z-[70] w-[300px] flex flex-col md:hidden transition-transform duration-300 ease-out",
+          "fixed top-0 bottom-0 z-modal w-[var(--nav-drawer-w)] flex flex-col md:hidden transition-transform duration-[var(--motion-mid)] ease-out",
           locale === "ar"
             ? cn("right-0", open ? "translate-x-0" : "translate-x-full")
             : cn("left-0", open ? "translate-x-0" : "-translate-x-full")
         )}
         style={{
-          background: "var(--bg-secondary)",
+          background: "var(--dark-walnut)",
           boxShadow: "var(--shadow-3)",
           paddingBottom: "env(safe-area-inset-bottom,0px)",
         }}
       >
         {/* Drawer header */}
         <div
-          className="flex items-center justify-between px-5 h-[70px] shrink-0"
-          style={{ borderBottom: "1px solid var(--border-subtle)" }}
+          className="flex items-center justify-between px-[var(--space-5)] h-[var(--nav-top-h)] shrink-0"
+          style={{ borderBottom: "1px solid var(--border-1)" }}
         >
           <div className="flex items-center gap-2.5">
             <div className="relative w-12 h-12">
@@ -219,34 +215,43 @@ export default function Header() {
           </div>
           <button
             onClick={() => setOpen(false)}
-            className="inline-flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
-            style={{ width: 48, height: 48, color: "var(--text-muted)" }}
+            className="inline-flex items-center justify-center rounded-pill hover:bg-white/10 transition-colors duration-2"
+            style={{ width: "var(--tap-min)", height: "var(--tap-min)", color: "var(--text-muted)" }}
           >
-            <X size={20} strokeWidth={2} />
+            <Icon name="close" />
           </button>
         </div>
 
         {/* Links */}
         <nav className="flex flex-col flex-1 overflow-y-auto px-4 py-4 gap-1">
-          {NAV_ITEMS.map(({ key, path, Icon: NavIcon }) => {
+          {NAV_ITEMS.map(({ key, path }) => {
             const active = isActive(path);
             return (
               <Link
                 key={key}
                 href={`/${locale}${path}`}
-                className="flex items-center gap-3 px-4 py-3.5 rounded-2xl font-semibold no-underline transition-all"
+                className="flex items-center gap-3 px-4 py-3.5 rounded-2 transition-[background-color,color] duration-2 fontWeight-semi no-underline"
                 style={{
-                  color: active ? "var(--brand-gold)" : "var(--text-body)",
-                  background: active ? "var(--bg-tertiary)" : "transparent",
-                  fontWeight: active ? "700" : "500",
+                  color: active ? "var(--color-gold)" : "var(--text-body)",
+                  background: active ? "var(--bg-surface)" : "transparent",
                 }}
               >
-                <NavIcon size={18} strokeWidth={active ? 2.5 : 1.75} />
+                <Icon
+                  name={key === "home" ? "home" :
+                    key === "menu" ? "restaurant_menu" :
+                      key === "story" ? "history" :
+                        key === "recipes" ? "menu_book" :
+                          key === "events" ? "event" :
+                            key === "gallery" ? "image" :
+                              key === "branches" ? "location_on" : "link"}
+                  size="sm"
+                  filled={active}
+                />
                 {t(key as any)}
                 {active && (
                   <span
-                    className="ms-auto w-1.5 h-1.5 rounded-full"
-                    style={{ background: "var(--brand-gold)" }}
+                    className="ms-auto w-1.5 h-1.5 rounded-pill"
+                    style={{ background: "var(--color-gold)" }}
                   />
                 )}
               </Link>
@@ -258,29 +263,29 @@ export default function Header() {
         <div className="p-4 flex flex-col gap-2.5" style={{ borderTop: "1px solid var(--border-subtle)" }}>
           <button
             onClick={switchLocale}
-            className="flex items-center justify-center gap-2 rounded-2xl font-semibold border transition-colors hover:bg-white/10"
+            className="flex items-center justify-center gap-2 rounded-2 border transition-colors duration-2 hover:bg-white/10 fontWeight-semi"
             style={{
-              height: "var(--tap-target)",
-              borderColor: "var(--border-subtle)",
+              height: "var(--tap-min)",
+              borderColor: "var(--border-1)",
               color: "var(--text-body)",
-              background: "var(--bg-tertiary)"
+              background: "var(--bg-surface)"
             }}
           >
-            <Globe size={16} strokeWidth={1.75} />
+            <Icon name="language" size="sm" />
             {t("lang")}
           </button>
           <a
             href="https://www.talabat.com/ar/bahrain/kahramanat-baghdad-restaurant"
             target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-2xl font-bold no-underline transition-all hover:brightness-105"
+            className="flex items-center justify-center gap-2 rounded-2 fontWeight-black no-underline transition-[filter,transform] duration-2 hover:brightness-105 active:scale-95"
             style={{
-              height: "var(--tap-target)",
-              background: "var(--brand-gold)",
-              color: "var(--bg-primary)",
-              boxShadow: "var(--shadow-gold)",
+              height: "var(--tap-min)",
+              background: "var(--color-gold)",
+              color: "var(--color-coffee)",
+              boxShadow: "var(--glow-gold)",
             }}
           >
-            <Bike size={20} strokeWidth={2} />
+            <Icon name="delivery_dining" />
             {t("order")}
           </a>
         </div>

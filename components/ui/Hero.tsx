@@ -63,11 +63,11 @@ export default function Hero({
         "relative w-full overflow-hidden",
         // Responsive height: token on mobile, bump at md/lg breakpoints
         size === "lg"
-          ? "h-[var(--hero-h-md)] md:h-[var(--hero-h-lg)] lg:h-[calc(var(--hero-h-lg)+60px)]"
+          ? "h-[var(--hero-h-sm)] md:h-[var(--hero-h-md)] lg:h-[var(--hero-h-lg)]"
           : size === "sm"
-            ? "h-[var(--hero-h-sm)] md:h-[var(--hero-h-md)]"
-            : "h-[var(--hero-h-md)] md:h-[calc(var(--hero-h-md)+60px)]",
-        "rounded-b-3xl",
+            ? "h-[var(--hero-h-sm)] md:h-[var(--hero-h-sm)]"
+            : "h-[var(--hero-h-sm)] md:h-[var(--hero-h-md)]",
+        "rounded-b-[var(--radius-3xl)]",
         className
       )}
     >
@@ -98,27 +98,27 @@ export default function Hero({
         className="absolute inset-0"
         style={{
           background: isCenter
-            ? "var(--hero-overlay-center)"
-            : "var(--hero-overlay-bottom)",
+            ? "var(--bg-overlay-deep)"
+            : "linear-gradient(to top, var(--bg-overlay-deep) 0%, color-mix(in srgb, black 40%, transparent) 50%, transparent 100%)",
         }}
       />
 
       {/* ── Text + CTAs ───────────────────────────────────────────── */}
       <div
         className={cn(
-          "absolute inset-x-0 flex flex-col gap-2 px-4 md:px-8",
+          "absolute inset-x-0 flex flex-col gap-[var(--space-2)] px-[var(--space-4)] md:px-[var(--space-8)]",
           isCenter
             ? "top-1/2 -translate-y-1/2 items-center text-center"
-            : "bottom-0 pb-10 md:pb-14"
+            : "bottom-0 pb-[var(--space-10)] md:pb-[var(--space-14)]"
         )}
       >
         {tagline && (
           <p
-            className="font-bold uppercase tracking-wider"
+            className="fontWeight-black uppercase tracking-wider"
             style={{
-              fontSize: "0.875rem",
-              color: "var(--color-primary)",
-              textShadow: "0 1px 2px rgba(0,0,0,0.4)",
+              fontSize: "var(--fs-300)",
+              color: "var(--metallic-gold)",
+              textShadow: "var(--shadow-text-sm)",
               marginBottom: "-4px",
             }}
           >
@@ -127,22 +127,22 @@ export default function Hero({
         )}
 
         <h1
-          className="font-black leading-tight section-title-gold"
+          className="fontWeight-black leading-tight section-title-gold"
           style={{
-            fontSize: "clamp(2rem, 6vw, 3.5rem)",
-            textShadow: "0 2px 10px rgba(0,0,0,0.3)",
+            fontSize: "clamp(2rem, 6vw, var(--fs-900))",
+            textShadow: "var(--shadow-text-lg)",
           }}
         >
           {title}
         </h1>
 
         <p
-          className="font-medium"
+          className="fontWeight-semi"
           style={{
-            fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
-            lineHeight: "1.4",
-            color: "var(--text-on-dark)",
-            textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+            fontSize: "clamp(1rem, 2.5vw, var(--fs-600))",
+            lineHeight: "var(--lh-tight)",
+            color: "var(--text-body)",
+            textShadow: "var(--shadow-text-sm)",
             maxWidth: "50ch",
           }}
         >
@@ -150,20 +150,20 @@ export default function Hero({
         </p>
 
         {(cta || ctaSecondary) && (
-          <div className="flex flex-wrap gap-3 mt-2">
+          <div className="flex flex-wrap gap-[var(--space-3)] mt-[var(--space-2)]">
             {cta && (
               <Link
                 href={cta.href}
-                className="inline-flex items-center justify-center gap-2 font-bold no-underline
-                           active:scale-95 hover:brightness-105 transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 fontWeight-black no-underline
+                           active:scale-95 hover:brightness-105 transition-[filter,transform,box-shadow] duration-2"
                 style={{
-                  minHeight: "var(--tap-target)",
+                  minHeight: "var(--tap-min)",
                   paddingInline: "var(--space-6)",
-                  borderRadius: "var(--radius-md)",
-                  fontSize: "0.9375rem",
-                  background: "var(--color-primary)",
-                  color: "var(--color-on-primary)",
-                  boxShadow: "var(--shadow-gold)",
+                  borderRadius: "var(--radius-1)",
+                  fontSize: "var(--fs-400)",
+                  background: "var(--metallic-gold)",
+                  color: "var(--coffee-bean)",
+                  boxShadow: "var(--glow-gold)",
                 }}
               >
                 {cta.label}
@@ -172,16 +172,16 @@ export default function Hero({
             {ctaSecondary && (
               <Link
                 href={ctaSecondary.href}
-                className="inline-flex items-center justify-center gap-2 font-bold no-underline
-                           active:scale-95 hover:bg-white/20 transition-all duration-150"
+                className="inline-flex items-center justify-center gap-2 fontWeight-black no-underline
+                           active:scale-95 hover:bg-white/20 transition-[background-color,transform] duration-2"
                 style={{
-                  minHeight: "var(--tap-target)",
+                  minHeight: "var(--tap-min)",
                   paddingInline: "var(--space-6)",
-                  borderRadius: "var(--radius-md)",
-                  fontSize: "0.9375rem",
-                  border: "2px solid var(--border-subtle)",
+                  borderRadius: "var(--radius-1)",
+                  fontSize: "var(--fs-400)",
+                  border: "2px solid var(--border-1)",
                   color: "var(--text-body)",
-                  background: "var(--bg-gold-tint)",
+                  background: "var(--bg-muted)",
                   backdropFilter: "blur(6px)",
                 }}
               >

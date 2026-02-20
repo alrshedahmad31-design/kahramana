@@ -21,7 +21,15 @@
     "categories_subtitle": "أكثر من 109 أطباق عراقية فاخرة بانتظارك",
     "reviews_title": "تجارب ضيوفنا الكرام",
     "reviews_subtitle": "شهادات نعتز بها من قلب المجتمع",
-    "verified": "زائر موثوق"
+    "verified": "زائر موثوق",
+    "stats_years_num": "8",
+    "stats_years_label": "سنوات من التميز",
+    "stats_dishes_num": "+109",
+    "stats_dishes_label": "طبق مميز",
+    "stats_branches_num": "2",
+    "stats_branches_label": "فرعان في البحرين",
+    "stats_rating_num": "4.5",
+    "stats_rating_label": "+1400 تقييم"
   },
   "menu": {
     "hero_title": "نكهات بغداد على مائدتك",

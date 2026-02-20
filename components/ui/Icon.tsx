@@ -4,7 +4,7 @@
  */
 import { cn } from "@/lib/utils";
 
-type IconSize = "sm" | "md" | "lg";
+type IconSize = "xs" | "sm" | "md" | "lg";
 
 export interface IconProps {
   name: string;
@@ -13,12 +13,14 @@ export interface IconProps {
   /** Flip horizontally for directional icons (arrows) in RTL */
   directional?: boolean;
   color?: string;
+  style?: React.CSSProperties;
   className?: string;
   "aria-label"?: string;
   "aria-hidden"?: boolean | "true" | "false";
 }
 
 const sizeClass: Record<IconSize, string> = {
+  xs: "icon-xs",
   sm: "icon-sm",
   md: "",
   lg: "icon-lg",
@@ -30,6 +32,7 @@ export default function Icon({
   filled = false,
   directional = false,
   color,
+  style,
   className,
   "aria-label": ariaLabel,
   "aria-hidden": ariaHidden,
@@ -43,7 +46,7 @@ export default function Icon({
         directional && "icon-dir",
         className
       )}
-      style={color ? { color } : undefined}
+      style={{ ...style, ...(color ? { color } : {}) }}
       aria-label={ariaLabel}
       aria-hidden={ariaHidden ?? (ariaLabel ? undefined : true)}
       role={ariaLabel ? "img" : undefined}

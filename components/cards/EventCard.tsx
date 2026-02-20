@@ -12,7 +12,7 @@ export default function EventCard({ event, locale, className }: {
   return (
     <article
       className={cn("rounded-3xl overflow-hidden group cursor-pointer", className)}
-      style={{ background:"var(--color-surface)", boxShadow:"var(--shadow-2)", border:"1px solid var(--color-border)" }}
+      style={{ background: "var(--color-surface)", boxShadow: "var(--shadow-2)", border: "1px solid var(--color-border)" }}
     >
       <div className="relative h-56 overflow-hidden">
         <Image
@@ -21,21 +21,21 @@ export default function EventCard({ event, locale, className }: {
           fill className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width:768px) 100vw,400px"
         />
-        <div className="absolute inset-0" style={{ background:"var(--hero-overlay-bottom)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, var(--bg-overlay-deep) 0%, color-mix(in srgb, black 40%, transparent) 50%, transparent 100%)" }} />
         {event.highlight && (
           <span
             className="absolute top-3 start-3 text-xs font-bold px-3 py-1.5 rounded-full"
-            style={{ background:"var(--brand-gold)", color:"var(--bg-primary)" }}
+            style={{ background: "var(--brand-gold)", color: "var(--bg-primary)" }}
           >
             {locale === "ar" ? "الأكثر طلبًا" : "Most Popular"}
           </span>
         )}
-        <h3 className="absolute bottom-4 start-4 font-black text-lg text-white" style={{ textShadow:"0 2px 8px rgba(0,0,0,0.5)" }}>
+        <h3 className="absolute bottom-[var(--space-4)] start-[var(--space-4)] font-black text-lg text-white" style={{ textShadow: "var(--shadow-text-sm)" }}>
           {locale === "ar" ? event.name.ar : event.name.en}
         </h3>
       </div>
       <div className="p-5">
-        <p className="text-sm leading-relaxed" style={{ color:"var(--color-text-muted)" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
           {locale === "ar" ? event.description.ar : event.description.en}
         </p>
       </div>

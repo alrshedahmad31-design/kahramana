@@ -35,12 +35,27 @@ export default async function GalleryPage({ params }: { params: { locale: string
             alt: t("alt_outdoor_seating"),
             className: "md:col-span-1 md:row-span-1"
         },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior7.webp",
+            alt: t("alt_arabic_seating"),
+            className: "md:col-span-2 md:row-span-1"
+        },
 
         // BLOCK 2: Wide Feature (Family Dining)
         {
             src: "/assets/seating/private-family-dining-iraqi-restaurant.webp",
             alt: t("alt_family_seating"),
             className: "md:col-span-2 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/pictures_interior/pictures_interior2.webp",
+            alt: t("alt_family_seating"),
+            className: "md:col-span-1 md:row-span-1"
+        },
+        {
+            src: "/assets/kahramanat_photos/chef-made/baqala-bil-dihin.webp",
+            alt: t("alt_baqala"),
+            className: "md:col-span-1 md:row-span-2"
         },
 
         // BLOCK 3: Tall Feature (Tea Culture)
@@ -50,12 +65,10 @@ export default async function GalleryPage({ params }: { params: { locale: string
             className: "md:col-span-1 md:row-span-2"
         },
         {
-            src: "/assets/kahramanat_photos/chef-made/baqala-bil-dihin.webp",
-            alt: t("alt_baqala"),
+            src: "/assets/kahramanat_photos/pictures_interior/tea_section2.webp",
+            alt: t("alt_tea_section"),
             className: "md:col-span-1 md:row-span-1"
         },
-
-        // BLOCK 4: Dynamic Duo (Interior Ambiance)
         {
             src: "/assets/kahramanat_photos/chef-made/tea.webp",
             alt: t("alt_tea"),
@@ -72,7 +85,7 @@ export default async function GalleryPage({ params }: { params: { locale: string
             className: "md:col-span-1 md:row-span-1"
         },
 
-        // BLOCK 5: The "Fine Dining" Look (Outdoor Details)
+        // BLOCK 4: Dynamic Duo (Interior Ambiance)
         {
             src: "/assets/kahramanat_photos/chef-made/liver.webp",
             alt: t("alt_liver"),
@@ -88,12 +101,13 @@ export default async function GalleryPage({ params }: { params: { locale: string
             alt: t("alt_vine_leaves"),
             className: "md:col-span-2 md:row-span-2"
         },
-
         {
             src: "/assets/kahramanat_photos/pictures_interior/pictures_interior5.webp",
             alt: t("alt_family_seating"),
             className: "md:col-span-2 md:row-span-1"
         },
+
+        // BLOCK 5: Finale
         {
             src: "/assets/kahramanat_photos/chef-made/DSC06211-819x1024.webp",
             alt: t("alt_signature_dish"),
@@ -117,7 +131,7 @@ export default async function GalleryPage({ params }: { params: { locale: string
     ];
 
     return (
-        <main className="bg-ebony-black min-h-screen pb-20">
+        <main className="bg-coffee min-h-screen pb-[var(--space-16)]">
             <Hero
                 title={locale === "ar" ? "معرض الصور" : "Gallery"}
                 subtitle={locale === "ar" ? "قصة تُروى بالألوان والمطعم" : "A story told in colors and flavors"}
@@ -125,8 +139,8 @@ export default async function GalleryPage({ params }: { params: { locale: string
                 size="sm"
             />
 
-            <section className="max-w-screen-2xl mx-auto px-6 py-24">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <section className="max-w-screen-2xl mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-[var(--space-16)] gap-[var(--space-8)]">
                     <div className="max-w-2xl">
                         <SectionTitle
                             title={locale === "ar" ? "فخامة التفاصيل" : "Luxury in Detail"}
@@ -135,9 +149,9 @@ export default async function GalleryPage({ params }: { params: { locale: string
                         />
                     </div>
                     <div className="hidden md:block">
-                        <div className="flex gap-2 text-gold-primary/40 text-xs font-black uppercase tracking-[0.4em] leading-none mb-4">
+                        <div className="flex gap-[var(--space-2)] text-gold/40 text-[var(--fs-200)] font-black uppercase tracking-[0.4em] leading-none mb-[var(--space-4)]">
                             <span>Ambiance</span>
-                            <span className="w-12 h-px bg-gold-primary/20 self-center" />
+                            <span className="w-[var(--space-12)] h-px bg-gold/20 self-center" />
                             <span>Authenticity</span>
                         </div>
                     </div>
@@ -145,13 +159,13 @@ export default async function GalleryPage({ params }: { params: { locale: string
 
                 <GalleryGrid items={galleryItems} />
 
-                <div className="mt-32 text-center relative">
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold-primary/10 to-transparent" />
-                    <div className="relative inline-block bg-ebony-black px-12">
-                        <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.5em] mb-4">
+                <div className="mt-[var(--space-16)] text-center relative">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
+                    <div className="relative inline-block bg-coffee px-[var(--space-12)]">
+                        <p className="text-white/30 text-[var(--fs-100)] font-black uppercase tracking-[0.5em] mb-[var(--space-4)]">
                             Kahramana Baghdad
                         </p>
-                        <p className="text-white/50 text-base max-w-xl italic mx-auto font-medium">
+                        <p className="text-white/50 text-[var(--fs-400)] max-w-xl italic mx-auto font-medium">
                             {locale === "ar"
                                 ? "كل زاوية تروي قصة، وكل طبق هو فصل من فصول الجودة."
                                 : "Every corner tells a story, and every dish is a chapter of quality."}

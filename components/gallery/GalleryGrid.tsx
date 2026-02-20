@@ -22,7 +22,7 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
                     transition={{ duration: 0.5, delay: i * 0.05 }}
                     viewport={{ once: true }}
                     className={cn(
-                        "group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-ebony-darker shadow-inner",
+                        "group relative overflow-hidden rounded-3 border-1 border-white/10 bg-muted shadow-1",
                         item.className
                     )}
                 >
@@ -30,26 +30,26 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
                         src={item.src}
                         alt={item.alt}
                         fill
-                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        className="object-cover transition-transform duration-10 hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         priority={item.priority}
                     />
 
                     {/* Sophisticated Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-3" />
 
                     {/* Premium Info Tag */}
-                    <div className="absolute inset-x-0 bottom-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-gold-primary/10 backdrop-blur-md border border-gold-primary/20 text-gold-primary text-[10px] font-bold uppercase tracking-widest mb-2">
+                    <div className="absolute inset-x-0 bottom-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-[transform,opacity] duration-4">
+                        <span className="inline-block px-4 py-1.5 rounded-pill bg-gold/10 backdrop-blur-md border-1 border-gold/20 text-gold fs-100 fontWeight-black uppercase tracking-widest mb-2">
                             Kahramana Gallery
                         </span>
-                        <h3 className="text-white font-black text-lg leading-tight lg:text-xl">
+                        <h3 className="text-white fontWeight-black fs-500 leading-tight lg:fs-600">
                             {item.alt}
                         </h3>
                     </div>
 
                     {/* Corner Glow Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold-primary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -mr-16 -mt-16" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-pill opacity-0 group-hover:opacity-100 transition-opacity duration-5 -mr-16 -mt-16" />
                 </motion.div>
             ))}
         </div>

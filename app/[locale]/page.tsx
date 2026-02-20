@@ -4,7 +4,9 @@ import { getTranslations } from "next-intl/server";
 import Hero from "@/components/ui/Hero";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
+import Icon from "@/components/ui/Icon";
 import branchesData from "@/data/branches.json";
+import StatsSection from "@/components/sections/StatsSection";
 
 export async function generateMetadata(
   { params }: { params: { locale: string } }
@@ -78,16 +80,28 @@ export default async function HomePage({ params }: { params: { locale: string } 
         size="lg"
       />
 
-      <div className="max-w-screen-lg mx-auto px-4 overflow-hidden mb-20">
+      <div className="max-w-screen-lg mx-auto px-[var(--space-4)] overflow-hidden mb-[var(--space-9)]">
+        {/* Stats Section */}
+        <StatsSection t={{
+          years_num: t("stats_years_num"),
+          years_label: t("stats_years_label"),
+          dishes_num: t("stats_dishes_num"),
+          dishes_label: t("stats_dishes_label"),
+          branches_num: t("stats_branches_num"),
+          branches_label: t("stats_branches_label"),
+          rating_num: t("stats_rating_num"),
+          rating_label: t("stats_rating_label"),
+        }} />
+
         {/* Category Explorer */}
-        <section className="mt-20">
+        <section className="mt-[var(--space-9)]">
           <SectionTitle title={t("categories_title")} subtitle={t("categories_subtitle")} centered />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-[var(--space-4)] mt-[var(--space-7)]">
             {categories.map((cat) => (
               <a
                 key={cat.id}
                 href={`/${locale}/menu#${cat.id}`}
-                className="group relative h-48 rounded-3xl overflow-hidden border no-underline transition-all hover:border-[var(--brand-gold)] hover:shadow-2xl"
+                className="group relative h-48 rounded-3xl overflow-hidden border no-underline transition-shadow transition-colors hover:border-[var(--color-gold)] hover:shadow-2xl"
                 style={{ background: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}
               >
                 <Image
@@ -109,35 +123,35 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </section>
 
         {/* Testimonials */}
-        <section className="mt-24 py-16 px-6 rounded-[var(--radius-2xl)]" style={{ background: "var(--bg-tertiary)" }}>
+        <section className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] rounded-[var(--radius-2xl)]" style={{ background: "var(--bg-tertiary)" }}>
           <SectionTitle title={t("reviews_title")} subtitle={t("reviews_subtitle")} centered />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-4)] mt-[var(--space-5)]">
             {reviews.map((rev, i) => (
               <div key={i} className="flex flex-col p-8 rounded-3xl border space-y-4 h-full" style={{ background: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm" style={{ background: "var(--brand-gold)", color: "var(--bg-primary)" }}>
                     {rev.initials}
                   </div>
-                  <div>
-                    <p className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>{rev.name}</p>
-                    <p className="text-[10px] items-center gap-1 flex" style={{ color: "var(--brand-gold)" }}>
-                      <span className="ms ms-xs">check_circle</span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold truncate" style={{ color: "var(--text-primary)" }}>{rev.name}</p>
+                    <div className="text-[10px] items-center gap-1 flex" style={{ color: "var(--brand-gold)" }}>
+                      <Icon name="check_circle" size="xs" filled />
                       {t("verified")}
-                    </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-2 flex-grow">
-                  <p className="text-sm font-bold leading-tight" style={{ color: "var(--brand-gold)" }}>
+                <div className="space-y-[var(--space-2)] flex-grow">
+                  <p className="text-[var(--fs-300)] font-bold leading-tight" style={{ color: "var(--brand-gold)" }}>
                     {rev.title}
                   </p>
-                  <p className="text-sm italic leading-relaxed text-justify" style={{ color: "var(--text-body)" }}>
+                  <p className="text-[var(--fs-300)] italic leading-relaxed text-justify" style={{ color: "var(--text-body)" }}>
                     &ldquo;{rev.text}&rdquo;
                   </p>
                 </div>
 
-                <div className="flex gap-0.5 pt-2" style={{ color: "var(--brand-gold)" }}>
-                  {[...Array(5)].map((_, i) => <span key={i} className="ms ms-xs">star</span>)}
+                <div className="flex gap-[var(--space-1)] pt-[var(--space-2)]" style={{ color: "var(--brand-gold)" }}>
+                  {[...Array(5)].map((_, i) => <Icon key={i} name="star" size="xs" filled />)}
                 </div>
               </div>
             ))}
@@ -145,7 +159,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </section>
 
         {/* Gallery CTA */}
-        <section className="mt-24 py-16 px-6 text-center border-y border-[var(--border-subtle)]">
+        <section className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] text-center border-y border-[var(--border-subtle)]">
           <SectionTitle
             title={locale === "ar" ? "معرض الصور" : "Gallery Exhibits"}
             subtitle={locale === "ar" ? "استعرض أجواءنا العراقية الأصيلة وأطباقنا الفاخرة" : "Explore our authentic Iraqi ambiance and premium dishes"}
@@ -154,7 +168,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           <div className="mt-8">
             <Link
               href={`/${locale}/gallery`}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl font-bold text-sm transition-all hover:opacity-90 active:scale-95"
+              className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-8)] py-[var(--space-3)] rounded-[var(--radius-2)] font-bold text-[var(--fs-300)] transition-opacity transition-transform hover:opacity-90 active:scale-95"
               style={{ background: "var(--brand-gold)", color: "var(--bg-primary)", boxShadow: "var(--shadow-gold)" }}
             >
               {locale === "ar" ? "مشاهدة معرض الصور كاملاً" : "View Full Gallery"}

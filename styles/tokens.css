@@ -5,202 +5,232 @@
    ================================================================= */
 
 :root {
-  /* ── 1. Brand Primitives ──────────────────────────────────────── */
+   /* ── 1. Brand Primitives (Adopted Identity) ─────────────────────── */
 
-  --brand-60-ebony: #452C23;
-  /* Primary bg / header — deep earth   */
-  --brand-20-terracotta: #5F311A;
-  /* Secondary surfaces / cards          */
-  --brand-10-gold: #C5A059;
-  /* CTA / prominent elements            */
-  --brand-10-orange: #BF5C26;
-  /* Interactions / links                */
+   --metallic-gold: #d4af37;
+   --saddle-brown: #944e2c;
+   --coffee-bean: #6e4531;
+   --dark-walnut: #5f311a;
+   --base-saddle: var(--saddle-brown);
 
-  /* ── 2. Semantic Background Tokens ───────────────────────────── */
+   /* Semantic Status Colors */
+   --color-success: #16a34a;
+   --color-error: #b91c1c;
 
-  --bg-primary: var(--brand-60-ebony);
-  /* #452C23 */
-  --bg-secondary: var(--brand-20-terracotta);
-  /* #5F311A */
-  --bg-tertiary: rgba(197, 160, 89, 0.05);
-  /* subtle gold tint (5%)  */
-  --bg-gold-tint: rgba(197, 160, 89, 0.08);
-  /* icon bg tint      (8%)  */
-  --bg-gold-badge: rgba(197, 160, 89, 0.15);
-  /* featured badge bg (15%) */
+   /* Third-Party Branding */
+   --color-whatsapp: #25d366;
+   --color-whatsapp-dark: #128c7e;
 
-  /* ── 3. Semantic Text Tokens ──────────────────────────────────── */
+   /* Semantic Primary Palette */
+   --color-gold: var(--metallic-gold);
+   --color-saddle: var(--saddle-brown);
+   --color-coffee: var(--coffee-bean);
+   --color-walnut: var(--dark-walnut);
 
-  --text-primary: #C5A059;
-  /* Titles — gold           */
-  --text-body: #E5C89F;
-  /* Body — sand             */
-  --text-muted: rgba(229, 200, 159, 0.70);
-  /* Muted sand              */
-  --text-on-dark: #ffffff;
-  /* White on dark bg        */
+   /* ── 2. Neutrals ──────────────────────────────────────────────── */
+   --bg-primary: var(--color-coffee);
+   --bg-secondary: var(--color-walnut);
+   --bg-surface: rgba(212, 175, 55, 0.05);
+   --bg-muted: rgba(212, 175, 55, 0.08);
+   --bg-white-low: rgba(255, 255, 255, 0.05);
+   --bg-white-mid: rgba(255, 255, 255, 0.1);
+   --bg-white-ultra-low: rgba(255, 255, 255, 0.05);
 
-  /* ── 4. Brand Accent Tokens ──────────────────────────────────── */
+   --text-primary: var(--color-gold);
+   --text-body: #f8f4e1;
+   /* Warm Neutral Ivory */
+   --text-muted: #c2b092;
+   /* Muted Gold/Sand */
+   --text-on-gold: #000000;
+   --text-white-subtle: rgba(255, 255, 255, 0.5);
+   /* Accessibility: Black text on gold */
 
-  --brand-gold: var(--brand-10-gold);
-  --brand-gold-hover: #e0c283;
-  --brand-spice: var(--brand-10-orange);
+   --border-1: rgba(212, 175, 55, 0.12);
+   --border-2: rgba(212, 175, 55, 0.25);
+   --border-subtle: rgba(255, 255, 255, 0.1);
+   --border-thin: 1px;
+   --border-thick: 2px;
 
-  /* ── 5. Border / Focus Tokens ────────────────────────────────── */
+   /* ── 3. Typography Scale ───────────────────────────────────────── */
+   --font-primary: 'Cairo', system-ui, sans-serif;
 
-  --border-subtle: rgba(197, 160, 89, 0.12);
-  --border-gold: var(--brand-gold);
+   --fs-900: 2.5rem;
+   /* 40px */
+   --fs-800: 2rem;
+   /* 32px */
+   --fs-700: 1.5rem;
+   /* 24px */
+   --fs-600: 1.25rem;
+   /* 20px */
+   --fs-500: 1.125rem;
+   /* 18px */
+   --fs-400: 1rem;
+   /* 16px */
+   --fs-300: 0.875rem;
+   /* 14px */
+   --fs-200: 0.75rem;
+   /* 12px */
+   --fs-100: 0.625rem;
+   /* 10px */
 
-  /* ── 6. Semantic Alias Tokens (used by components) ───────────── */
+   --lh-tight: 1.2;
+   --lh-base: 1.6;
 
-  /* Background */
-  --color-bg: var(--bg-primary);
-  --color-surface: var(--bg-secondary);
-  --color-surface-alt: var(--bg-tertiary);
-  --color-scrim: rgba(0, 0, 0, 0.85);
+   --fw-black: 900;
+   --fw-bold: 700;
+   --fw-semi: 600;
+   --fw-reg: 400;
 
-  /* Text */
-  --color-text: var(--text-body);
-  --color-text-muted: var(--text-muted);
-  --color-text-inverse: var(--bg-primary);
-  --color-link: var(--brand-spice);
+   /* ── 4. Spacing Scale ──────────────────────────────────────────── */
+   --space-1: 0.25rem;
+   /* 4px */
+   --space-2: 0.5rem;
+   /* 8px */
+   --space-3: 0.75rem;
+   /* 12px */
+   --space-4: 1rem;
+   /* 16px */
+   --space-5: 1.5rem;
+   /* 24px */
+   --space-6: 2rem;
+   /* 32px */
+   --space-7: 3rem;
+   /* 48px */
+   --space-8: 4rem;
+   /* 64px */
+   --space-9: 5rem;
+   /* 80px */
+   --space-10: 6rem;
+   /* 96px */
+   --space-12: 8rem;
+   /* 128px */
+   --space-14: 10rem;
+   /* 160px */
+   --space-16: 12rem;
+   /* 192px */
 
-  /* Interactive */
-  --color-primary: var(--brand-gold);
-  --color-on-primary: var(--bg-primary);
-  --color-secondary: var(--brand-spice);
-  --color-on-secondary: #ffffff;
+   --section-pad-y: var(--space-7);
+   --grid-gap: var(--space-4);
+   --grid-gap-relaxed: var(--space-6);
+   --grid-gap-base: var(--space-4);
 
-  /* Border / Focus */
-  --color-border: var(--border-subtle);
-  --color-focus: rgba(197, 160, 89, 0.30);
-  --focus-outline: var(--brand-spice);
-  --focus-halo: var(--color-focus);
+   /* ── 5. Radius Scale ───────────────────────────────────────────── */
+   --radius-1: 0.5rem;
+   /* 8px */
+   --radius-2: 1rem;
+   /* 16px */
+   --radius-3: 1.5rem;
+   /* 24px */
+   --radius-4: 2rem;
+   /* 32px */
+   --radius-5: 2.5rem;
+   /* 40px */
+   --radius-2xl: 1rem;
+   /* Legacy fallback */
+   --radius-3xl: 1.5rem;
+   /* Legacy fallback */
+   --radius-pill: 9999px;
 
+   /* ── 6. Shadows & Glows ────────────────────────────────────────── */
+   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12);
+   --shadow-2: 0 4px 6px rgba(0, 0, 0, 0.16);
+   --shadow-3: 0 10px 15px rgba(0, 0, 0, 0.2);
+   --shadow-text-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+   --shadow-text-lg: 0 2px 10px rgba(0, 0, 0, 0.3);
+   --glow-gold: 0 0 15px color-mix(in srgb, var(--color-gold), transparent 60%);
 
-  /* ── 8. Spacing Scale ─────────────────────────────────────────── */
+   /* ── 7. Containers ─────────────────────────────────────────────── */
+   --container-max: 1280px;
+   --container-pad: var(--space-4);
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
+   /* ── 8. Motion ─────────────────────────────────────────────────── */
+   --dur-1: 100ms;
+   --dur-2: 200ms;
+   --dur-3: 300ms;
+   --dur-4: 500ms;
 
-  /* ── 9. Border Radius Scale ───────────────────────────────────── */
+   --ease-in: cubic-bezier(0.4, 0, 1, 1);
+   --ease-out: cubic-bezier(0, 0, 0.2, 1);
+   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 32px;
-  --radius-pill: 9999px;
+   /* Motion Aliases */
+   --motion-fast: var(--dur-1);
+   --motion-mid: var(--dur-2);
+   --motion-slow: var(--dur-3);
+   --ease-std: var(--ease-out);
 
-  /* ── 10. Typography ───────────────────────────────────────────── */
+   /* Spring Config (Logical) */
+   --spring-stiff: 300;
+   --spring-damp: 30;
+   --spring-mass: 1;
+   --spring-standard: spring(1 300 30 0);
+   --spring-bouncy: spring(1 400 20 0);
+   /* CSS spring proposal syntax placeholder */
 
-  --font-ui: "Cairo", system-ui, sans-serif;
-  --text-body-lh: 1.6;
-  --text-tight-lh: 1.2;
+   /* ── 9. Z-Index Scale ──────────────────────────────────────────── */
+   --z-base: 0;
+   --z-nav: 50;
+   --z-backdrop: 55;
+   --z-drawer: 60;
+   --z-modal: 70;
+   --z-overlay: 75;
+   --z-popover: 80;
+   --z-toast: 90;
 
-  /* ── 11. Motion / Easing ──────────────────────────────────────── */
+   /* ── 10. Component Specific Tokens ────────────────────────────── */
+   --spotlight-gold: color-mix(in srgb, var(--color-gold), transparent 85%);
+   --modal-overlay-bg: color-mix(in srgb, var(--color-coffee) 80%, transparent);
+   --bg-overlay-deep: rgba(0, 0, 0, 0.85);
+   --pattern-size-lg: 400px;
+   --nav-drawer-w: 300px;
+   --nav-top-h: 80px;
+   --hero-h-sm: 360px;
+   --hero-h-md: 420px;
+   --hero-h-lg: 520px;
+   --menu-sticky-offset: -160px;
+   --input-icon-offset: 2.75rem;
+   --hero-gallery-h: 500px;
+   --menu-item-img-size: 112px;
 
-  --motion-instant: 80ms;
-  --motion-fast: 150ms;
-  --motion-base: 250ms;
-  --motion-slow: 400ms;
-  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
-  --easing-standard: var(--ease-std);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+   /* ── 10. Icon Sizes ───────────────────────────────────────────── */
+   --icon-size-xs: 16px;
+   --icon-size-sm: 20px;
+   --icon-size-md: 24px;
+   --icon-size-lg: 28px;
 
-  /* ── 12. Shadows ─────────────────────────────────────────────── */
+   /* ── 11. Accessibility ─────────────────────────────────────────── */
+   --tap-min: 44px;
+   --focus-width: 2px;
+   --focus-color: var(--color-saddle);
+   --focus-outline: var(--focus-width) solid var(--focus-color);
 
-  /* --shadow-1 = subtle card elevation */
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.04);
-  /* --shadow-2 = float / tooltip */
-  --shadow-2: 0 6px 16px rgba(0, 0, 0, 0.10);
-  /* --shadow-3 = sheet / drawer */
-  --shadow-3: 0 16px 40px rgba(0, 0, 0, 0.20);
-  /* --shadow-gold = CTA glow */
-  --shadow-gold: 0 4px 16px rgba(197, 160, 89, 0.40);
+   /* ── 12. Gradients ─────────────────────────────────────────────── */
+   --gold-stop-deep: #5f4b21;
+   --gold-stop-mid: #8a6d29;
+   --gold-stop-light: #fef3c7;
+   --gold-stop-max: #ffffff;
 
-  /* ── 13. Icon Sizes ───────────────────────────────────────────── */
+   --gold-gradient-soft: linear-gradient(135deg, var(--color-gold) 0%, #f1d279 50%, var(--color-gold) 100%);
+   --gold-gradient-rich: linear-gradient(135deg, var(--gold-stop-mid) 0%, var(--color-gold) 50%, var(--gold-stop-mid) 100%);
+   --gold-gradient-liquid: linear-gradient(110deg,
+         var(--gold-stop-deep) 0%,
+         var(--gold-stop-mid) 15%,
+         var(--color-gold) 30%,
+         var(--gold-stop-light) 45%,
+         var(--gold-stop-max) 50%,
+         var(--gold-stop-light) 55%,
+         var(--color-gold) 70%,
+         var(--gold-stop-mid) 85%,
+         var(--gold-stop-deep) 100%);
 
-  --icon-size-xs: 16px;
-  --icon-size-sm: 20px;
-  --icon-size-md: 24px;
-  --icon-size-lg: 28px;
-  --icon-size-xl: 36px;
-
-  /* ── 14. Layout / Navigation ──────────────────────────────────── */
-
-  --nav-top-h: 60px;
-  --nav-bottom-h: 64px;
-  --tap-target: 48px;
-  --page-gutter: var(--space-4);
-
-  /* ── 15. Hero Heights ─────────────────────────────────────────── */
-
-  /* Three canonical sizes used across all 6 pages */
-  --hero-h-sm: 360px;
-  /* compact pages (menu, recipes) */
-  --hero-h-md: 420px;
-  /* standard pages                */
-  --hero-h-lg: 520px;
-  /* home / main landing           */
-
-  /* ── 16. Hero Overlay ─────────────────────────────────────────── */
-
-  /* bottom-aligned: text at bottom with strong gradient */
-  --hero-overlay-bottom:
-    linear-gradient(to top,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.40) 50%,
-      rgba(0, 0, 0, 0.10) 100%);
-
-  /* center-aligned: flat scrim */
-  --hero-overlay-center: rgba(0, 0, 0, 0.52);
-
-  /* ── 17. Status Colors ────────────────────────────────────────── */
-
-  /* Open / closed badge — semantic green & spice (matches brand) */
-  --status-open-bg: rgba(22, 163, 74, 0.10);
-  --status-open-fg: #16a34a;
-  --status-open-dot: #16a34a;
-  --status-closed-bg: rgba(191, 92, 38, 0.10);
-  /* reuses --brand-spice */
-  --status-closed-fg: var(--brand-spice);
-  --status-closed-dot: #b91c1c;
-  /* red-700 — clearer closed signal */
-
-  /* ── 18. 3rd-Party Brand Colors ───────────────────────────────── */
-
-  /* WhatsApp — updated to match brand identity */
-  --wa-bg: rgba(197, 160, 89, 0.10);
-  /* --brand-gold at 10% */
-  --wa-bg-hover: rgba(197, 160, 89, 0.20);
-  --wa-border: rgba(197, 160, 89, 0.20);
-  --wa-border-hover: rgba(197, 160, 89, 0.40);
-  --wa-green: var(--brand-gold);
-  /* reuses --brand-gold */
-  --wa-green-glow: rgba(197, 160, 89, 0.30);
-
-  /* Map embed background (neutral before hover) */
-  --map-bg: #e7e3dc;
-  /* warm neutral, matches brand warmth */
-
-  /* ── 19. Liquid Gold Animation ────────────────────────────────── */
-
-  /* Gradient stops — kept here so the animation in globals.css
-     can reference tokens instead of raw hex values */
-  --liquid-gold-dark: #8A6E2F;
-  --liquid-gold-mid: #C5A059;
-  /* == --brand-gold */
-  --liquid-gold-light: #FBF5B7;
+   /* ── Legacy Aliases (For gradual migration) ─────────────────────── */
+   --brand-gold: var(--metallic-gold);
+   --brand-spice: var(--saddle-brown);
+   --bg-primary-legacy: var(--coffee-bean);
+   --color-border: var(--border-1);
+   --color-surface: var(--bg-surface);
+   --color-text: var(--text-primary);
+   --color-text-muted: var(--text-muted);
 }
 
 /* ── LTR override layer ──────────────────────────────────────────

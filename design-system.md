@@ -16,19 +16,19 @@
 
 ## 1.1 Color Palette
 
-### 1.1.1 Base Palette (Dark)
+### 1.1.1 Base Palette
 | Token | Hex | Description |
 |---|---:|---|
-| `--brand-60-ebony` | `#452C23` | Deep primary bg (Ebony) |
-| `--brand-20-terracotta` | `#5F311A` | Secondary surfaces (Terracotta) |
-| `--brand-10-gold` | `#C5A059` | Primary brand accent (Gold) |
-| `--brand-10-orange` | `#BF5C26` | Interaction accent (Spice) |
+| `--color-gold` | `#d4af37` | Primary Gold accent |
+| `--color-saddle` | `#944e2c` | Secondary Saddle (Spice) |
+| `--color-coffee` | `#6e4531` | Deep Coffee (Primary BG) |
+| `--color-walnut` | `#5f311a` | Dark Walnut (Secondary Surface) |
 
 ### 1.1.2 Semantic Application
-- **Background**: `--bg-primary` (Ebony), `--bg-secondary` (Terracotta), `--bg-tertiary` (Subtle gold tint).
-- **Text**: `--text-primary` (Gold titles), `--text-body` (Warm sand), `--text-muted` (Muted sand), `--text-on-dark` (White).
-- **Interactive**: `--brand-gold` (Primary gold), `--brand-spice` (Interaction/Spice).
-- **Borders**: `--border-subtle` (Light translucent gold tint).
+- **Background**: `--bg-primary` (Coffee), `--bg-secondary` (Walnut), `--bg-surface` (Gold tint).
+- **Text**: `--text-primary` (Gold), `--text-body` (Ivory), `--text-muted` (Sand).
+- **Interactive**: `--brand-gold` (Alias for Gold), `--brand-spice` (Alias for Saddle).
+- **Borders**: `--border-1` (Light gold tint), `--border-2` (Medium gold tint).
 
 ---
 
@@ -53,6 +53,13 @@
 
 ### Radius
 - `xs` (4px), `sm` (8px), `md` (12px), `lg` (16px), `xl` (24px), `2xl` (32px), `pill` (9999px).
+
+### 1.5 Breakpoints (Tailwind Defaults)
+- **sm**: `640px` (Small tablets / Large phones)
+- **md**: `768px` (Tablets)
+- **lg**: `1024px` (Laptops / Desktop)
+- **xl**: `1280px` (Large Desktop)
+- **2xl**: `1536px` (Ultra-wide)
 
 ### Dimension Targets
 - **Header Top**: 60px.
@@ -82,7 +89,7 @@
 - **Navigation**:
   - **Top Bar**: Minimalist logo and primary actions.
   - **Bottom Bar**: Floating capsule design for mobile navigation.
-- **Cart System**: A custom client-side cart (`cart.js`) handling BHD currency and branch-specific WhatsApp orders.
+- **Cart System**: A custom client-side cart (`public/js/cart.js`) handling BHD currency and branch-specific WhatsApp orders. Loaded via `next/script` in the root layout.
 
 ---
 

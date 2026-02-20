@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { MapPin, Phone, Clock } from "lucide-react";
 import Icon from "@/components/ui/Icon";
 import { isOpenNow } from "@/lib/utils";
 
@@ -70,35 +69,42 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
 
     return (
         <section
-            className="w-full overflow-hidden border-b relative"
-            style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+            className="w-full overflow-hidden border-b-1 relative"
+            style={{ background: "var(--bg-secondary)", borderColor: "var(--border-1)" }}
         >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale invert"
-                style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: '400px' }} />
+                style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
             {/* SEO Schema Injection */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
 
-            <div className="max-w-screen-xl mx-auto px-6 py-16 lg:py-24 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch relative z-10">
+            <div className="max-w-screen-xl mx-auto px-[var(--space-4)] py-[var(--space-8)] lg:py-[var(--space-10)] relative z-base">
+                <div className="flex flex-col lg:flex-row gap-[var(--space-6)] lg:gap-[var(--space-9)] items-stretch relative z-base">
+                    {/* z-10 changed to z-base as it's within the section flow */}
 
                     {/* Left Column: Information */}
                     <div className="flex-1 flex flex-col justify-center">
                         <div className="space-y-6">
                             <div className="flex flex-wrap items-center gap-3">
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold"
-                                    style={{ background: open ? "var(--status-open-bg)" : "var(--status-closed-bg)", color: open ? "var(--status-open-fg)" : "var(--status-closed-fg)" }}>
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill fs-300 fontWeight-black"
+                                    style={{
+                                        background: open ? "color-mix(in srgb, var(--color-success) 10%, transparent)" : "color-mix(in srgb, var(--saddle-brown) 10%, transparent)",
+                                        color: open ? "var(--color-success)" : "var(--saddle-brown)"
+                                    }}>
                                     <span
-                                        className="w-2 h-2 rounded-full"
-                                        style={{ background: open ? "var(--status-open-dot)" : "var(--status-closed-dot)", animation: open ? "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite" : "none" }}
+                                        className="w-2 h-2 rounded-pill"
+                                        style={{
+                                            background: open ? "var(--color-success)" : "var(--color-error)",
+                                            animation: open ? "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite" : "none"
+                                        }}
                                     />
                                     {open ? t.open_now : t.closed_now}
                                 </div>
                                 {!open && (
-                                    <span className="text-sm font-medium opacity-80" style={{ color: "var(--color-text-muted)" }}>
+                                    <span className="fs-300 fontWeight-semi opacity-80" style={{ color: "var(--text-muted)" }}>
                                         {t.opens_at.replace("{{time}}", branch.opens)}
                                     </span>
                                 )}
@@ -108,16 +114,16 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                                 {branchName}
                             </h2>
 
-                            <div className="grid grid-cols-1 gap-6 pt-6 mb-8 border-t" style={{ borderColor: "var(--color-border)" }}>
+                            <div className="grid grid-cols-1 gap-[var(--space-6)] pt-[var(--space-6)] mb-[var(--space-8)] border-t-[var(--border-thin)]" style={{ borderColor: "var(--border-1)" }}>
                                 {/* Info: Address */}
-                                <div className="flex items-start gap-5">
-                                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
-                                        style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}>
-                                        <MapPin size={24} />
+                                <div className="flex items-start gap-4">
+                                    <div className="w-[var(--tap-min)] h-[var(--tap-min)] rounded-[var(--radius-1)] flex items-center justify-center shrink-0"
+                                        style={{ background: "var(--bg-muted)", color: "var(--metallic-gold)" }}>
+                                        <Icon name="location_on" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-bold opacity-60 uppercase tracking-widest mb-1">{t.address_label}</h4>
-                                        <p className="text-lg font-bold leading-normal">{branchAddress}</p>
+                                        <h4 className="fs-300 fontWeight-black opacity-60 uppercase tracking-widest mb-1">{t.address_label}</h4>
+                                        <p className="fs-500 fontWeight-black leading-tight">{branchAddress}</p>
                                     </div>
                                 </div>
 
@@ -125,7 +131,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                                 <div className="flex items-start gap-5">
                                     <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
                                         style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}>
-                                        <Phone size={24} />
+                                        <Icon name="call" />
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-bold opacity-60 uppercase tracking-widest mb-1">{t.call}</h4>
@@ -139,7 +145,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                                 <div className="flex items-start gap-5">
                                     <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
                                         style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}>
-                                        <Clock size={24} />
+                                        <Icon name="schedule" />
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-bold opacity-60 uppercase tracking-widest mb-1">{t.hours}</h4>
@@ -151,26 +157,26 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <a
                                     href={branch.maps} target="_blank" rel="noopener noreferrer"
-                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 px-8 py-5 rounded-2xl font-bold text-white transition-all hover:scale-[1.02] active:scale-95 shadow-lg"
-                                    style={{ background: "var(--brand-spice)", boxShadow: "var(--shadow-3)" }}
+                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black text-white transition-[transform,box-shadow,filter] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 shadow-2"
+                                    style={{ background: "var(--saddle-brown)", boxShadow: "var(--shadow-3)" }}
                                 >
-                                    <MapPin size={20} />
+                                    <Icon name="location_on" />
                                     {t.open_map}
                                 </a>
 
                                 <a
                                     href={`tel:${branch.phone.replace(/[\s\+]/g, '')}`}
-                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2 px-8 py-5 rounded-2xl font-bold transition-all hover:bg-[var(--brand-gold)]/10 active:scale-95 border"
-                                    style={{ borderColor: "var(--color-border)", color: "var(--text-body)" }}
+                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white/10 active:scale-95 border-[var(--border-thin)]"
+                                    style={{ borderColor: "var(--border-1)", color: "var(--text-body)" }}
                                 >
-                                    <Phone size={20} />
+                                    <Icon name="call" />
                                     {t.call}
                                 </a>
 
                                 <a
                                     href={`/${locale}/menu`}
-                                    className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-2 px-8 py-5 rounded-2xl font-bold transition-all hover:scale-[1.02] active:scale-95 border border-[var(--brand-gold)]/30 shadow-md"
-                                    style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}
+                                    className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black transition-[transform,background-color,border-color] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 border-[var(--border-thin)] border-white/10 shadow-1"
+                                    style={{ background: "var(--bg-muted)", color: "var(--color-gold)" }}
                                 >
                                     <Icon name="restaurant_menu" size="sm" />
                                     {t.order_menu}
@@ -180,8 +186,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                     </div>
 
                     {/* Right Column: Visual */}
-                    {/* --radius-2xl = 32px — closest token to 2.5rem */}
-                    <div className="flex-1 min-h-[400px] lg:min-h-auto relative overflow-hidden shadow-2xl border" style={{ borderRadius: "var(--radius-2xl)", borderColor: 'var(--color-border)' }}>
+                    <div className="flex-1 min-h-[var(--hero-gallery-h)] lg:min-h-auto relative overflow-hidden shadow-3 border-[var(--border-thin)]" style={{ borderRadius: "var(--radius-3)", borderColor: 'var(--border-1)' }}>
                         <Image
                             src={`/assets/branches/${imgName}.webp`}
                             alt={branchName}
@@ -200,19 +205,19 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
             </div>
 
             {/* Map Embed Section */}
-            <div className="w-full h-[450px] relative border-t group" style={{ borderColor: 'var(--color-border)', background: 'var(--map-bg)' }}>
+            <div className="w-full h-[450px] relative border-t-[var(--border-thin)] group" style={{ borderColor: 'var(--border-1)', background: 'var(--coffee-bean)' }}>
                 <iframe
                     src={`https://www.google.com/maps?q=${branch.coords.lat},${branch.coords.lng}&z=15&output=embed`}
                     width="100%"
                     height="100%"
-                    className="grayscale contrast-[1.1] opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
+                    className="grayscale contrast-[1.1] opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-[filter,opacity] duration-4 ease-in-out"
                     style={{ border: 0 }}
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                 />
                 {/* Subtle overlay to handle clicks/interactions smoothly if needed */}
-                <div className="absolute inset-0 pointer-events-none group-hover:opacity-0 transition-opacity duration-700 bg-black/5" />
+                <div className="absolute inset-0 pointer-events-none group-hover:opacity-0 transition-opacity duration-4 bg-black/5" />
             </div>
         </section>
     );

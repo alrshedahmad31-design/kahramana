@@ -2,7 +2,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import MenuItemCard from "@/components/cards/MenuItemCard";
 import { cn } from "@/lib/utils";
-import { Search, UtensilsCrossed } from "lucide-react";
+import Icon from "@/components/ui/Icon";
 
 interface Category { id: string; name: { ar: string; en: string }; icon: string; }
 interface MenuItem {
@@ -25,28 +25,23 @@ export default function MenuTabs({ categories, items, locale, labels }: {
 
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to top of grid when category or search changes
   useEffect(() => {
     if (!gridRef.current) return;
-
-    // Calculate position: just above the grid (under the sticky header)
-    const yOffset = -160; // Accommodate Header (60px) + Sticky Tabs (~100px)
+    const yOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--menu-sticky-offset')) || -160;
     const y = gridRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
     window.scrollTo({ top: y, behavior: 'smooth' });
   }, [cat, q]);
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Sticky Header Wrapper: Search + Categories */}
       <div
-        className="sticky z-30 space-y-5 py-4 -mt-4 bg-[var(--bg-primary)]/95 backdrop-blur-xl border-b border-[var(--border-subtle)] shadow-sm"
-        style={{ top: "var(--nav-top-h)" }}
+        className="sticky z-30 space-y-5 py-4 -mt-4 bg-primary/95 backdrop-blur-xl border-b-1 shadow-1"
+        style={{ top: "var(--nav-top-h)", borderBottomColor: "var(--border-1)" }}
       >
-        {/* Search */}
         <div className="relative">
-          <Search
-            size={20} strokeWidth={1.75}
+          <Icon
+            name="search"
+            size="sm"
             className="absolute top-1/2 -translate-y-1/2 start-3.5 pointer-events-none"
             style={{ color: "var(--text-muted)" }}
           />
@@ -55,32 +50,30 @@ export default function MenuTabs({ categories, items, locale, labels }: {
             placeholder={labels.search_placeholder}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            className="w-full rounded-2xl border text-sm bg-[var(--bg-tertiary)] outline-none transition-all placeholder:text-[var(--text-muted)] hover:border-[var(--brand-gold)]/40 focus:border-[var(--brand-gold)]"
+            className="w-full rounded-2 border-1 fs-300 bg-muted outline-none transition-[border-color,box-shadow] duration-2 placeholder:text-muted focus:border-gold"
             style={{
-              height: "var(--tap-target)",
-              paddingInlineStart: "2.75rem", paddingInlineEnd: "1rem",
+              height: "var(--tap-min)",
+              paddingInlineStart: "var(--input-icon-offset)", paddingInlineEnd: "1rem",
               borderColor: "var(--border-subtle)",
               color: "var(--text-body)",
             }}
           />
         </div>
 
-        {/* Tabs */}
         <div className="flex gap-2 overflow-x-auto pb-1 hide-scrollbar">
-          {/* height:48 = var(--tap-target); icon 16 = --icon-size-xs */}
           <button
             onClick={() => setCat("all")}
-            className={cn("flex items-center gap-1.5 shrink-0 px-5 rounded-full text-xs font-bold border transition-all active:scale-95",
-              cat === "all" ? "border-transparent" : "bg-[var(--bg-tertiary)]/50 border-[var(--border-subtle)]"
+            className={cn("flex items-center gap-1.5 shrink-0 px-5 rounded-pill fs-100 fontWeight-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
+              cat === "all" ? "border-transparent" : "bg-muted border-white/5"
             )}
             style={{
-              height: 48,
+              height: "var(--tap-min)",
               ...(cat === "all"
-                ? { background: "var(--brand-gold)", color: "var(--bg-primary)", boxShadow: "var(--shadow-gold)" }
+                ? { background: "var(--metallic-gold)", color: "var(--coffee-bean)", boxShadow: "var(--shadow-1)" }
                 : { color: "var(--text-muted)" }),
             }}
           >
-            <UtensilsCrossed size={16} strokeWidth={2.5} />
+            <Icon name="restaurant_menu" size="sm" />
             {labels.all}
           </button>
 
@@ -88,23 +81,30 @@ export default function MenuTabs({ categories, items, locale, labels }: {
             <button
               key={c.id}
               onClick={() => setCat(c.id)}
-              className={cn("shrink-0 px-5 rounded-full text-xs font-bold border transition-all active:scale-95",
-                cat === c.id ? "border-transparent" : "bg-[var(--bg-tertiary)]/50 border-[var(--border-subtle)]"
+              className={cn("flex items-center gap-2 shrink-0 px-5 rounded-pill fs-100 fontWeight-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
+                cat === c.id ? "border-transparent" : "bg-muted border-white/5"
               )}
               style={{
-                height: 48,
+                height: "var(--tap-min)",
                 ...(cat === c.id
-                  ? { background: "var(--brand-gold)", color: "var(--bg-primary)", boxShadow: "var(--shadow-gold)" }
+                  ? { background: "var(--metallic-gold)", color: "var(--coffee-bean)", boxShadow: "var(--shadow-1)" }
                   : { color: "var(--text-muted)" }),
               }}
             >
+              <Icon
+                name={c.id === "starters" ? "restaurant" :
+                  c.id === "main" ? "flatware" :
+                    c.id === "grill" ? "outdoor_grill" :
+                      c.id === "sides" ? "bakery_dining" :
+                        c.id === "drinks" ? "local_bar" : "restaurant_menu"}
+                size="sm"
+              />
               {locale === "ar" ? c.name.ar : c.name.en}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Grid */}
       {filtered.length === 0 ? (
         <p className="text-center py-16 text-sm" style={{ color: "var(--color-text-muted)" }}>
           {locale === "ar" ? "لا توجد نتائج" : "No results found"}

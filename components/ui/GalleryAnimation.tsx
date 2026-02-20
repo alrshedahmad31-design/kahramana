@@ -26,7 +26,7 @@ export function GalleryAnimation({
     const [hoveredId, setHoveredId] = useState<string | number | null>(null);
 
     return (
-        <div className={cn("flex w-full h-[500px] gap-2 overflow-hidden py-4", className)}>
+        <div className={cn("flex w-full h-[var(--hero-gallery-h)] gap-[var(--space-2)] overflow-hidden py-[var(--space-4)]", className)}>
             {items.map((item) => {
                 const isHovered = hoveredId === item.id;
 
@@ -36,7 +36,7 @@ export function GalleryAnimation({
                         onMouseEnter={() => setHoveredId(item.id)}
                         onMouseLeave={() => setHoveredId(null)}
                         className={cn(
-                            "relative h-full cursor-pointer overflow-hidden rounded-2xl transition-all duration-500 ease-out",
+                            "relative h-full cursor-pointer overflow-hidden rounded-2 transition-[flex,transform] duration-5 ease-out",
                             // On desktop: expand from 1 to 4 flex units
                             // On mobile: we might want a different behavior (stack or smaller expansion)
                             "flex-[1] hover:flex-[4]",
@@ -53,12 +53,12 @@ export function GalleryAnimation({
                         />
 
                         {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-ebony-black/90 via-ebony-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-coffee)]/90 via-[var(--color-coffee)]/20 to-transparent" />
 
                         {/* Content Container */}
-                        <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end overflow-hidden whitespace-nowrap">
+                        <div className="absolute bottom-0 left-0 w-full p-[var(--space-6)] flex flex-col justify-end overflow-hidden whitespace-nowrap">
                             <motion.h3
-                                className="text-xl font-bold text-gold-primary mb-1"
+                                className="fs-500 fontWeight-black text-[var(--color-gold)] mb-[var(--space-1)]"
                                 animate={{
                                     opacity: isHovered ? 1 : 0.7,
                                     y: isHovered ? 0 : 5,
@@ -73,7 +73,7 @@ export function GalleryAnimation({
                                         initial={{ opacity: 0, height: 0, y: 10 }}
                                         animate={{ opacity: 1, height: "auto", y: 0 }}
                                         exit={{ opacity: 0, height: 0, y: 10 }}
-                                        className="text-white/80 text-sm line-clamp-2"
+                                        className="text-white/80 fs-300 line-clamp-2"
                                     >
                                         {item.description}
                                     </motion.p>
@@ -85,7 +85,7 @@ export function GalleryAnimation({
                         {isHovered && (
                             <motion.div
                                 layoutId="gallery-glow"
-                                className="absolute inset-0 ring-2 ring-gold-primary/30 rounded-2xl pointer-events-none"
+                                className="absolute inset-0 ring-[var(--border-thick)] ring-[var(--color-gold)]/30 rounded-[var(--radius-1)] pointer-events-none"
                                 initial={false}
                             />
                         )}

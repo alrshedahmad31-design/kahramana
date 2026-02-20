@@ -1,75 +1,165 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface MenuItem {
-  id: string; name: { ar: string; en: string };
+  id: string;
+  name: { ar: string; en: string };
   description: { ar: string; en: string };
-  price: number; image: string; featured?: boolean;
+  price: number;
+  image: string;
+  featured?: boolean;
 }
 
-export default function MenuItemCard({ item, locale, currency, className }: {
-  item: MenuItem; locale: string; currency: string; className?: string;
+function readLocalQty(id: string): number {
+  try {
+    const raw = window.localStorage?.getItem("kahramana_cart_v2");
+    if (!raw) return 0;
+    const data = JSON.parse(raw) as { items?: { id: string; qty?: number }[] };
+    const it = data?.items?.find((x) => x.id === id);
+    return Number(it?.qty ?? 0) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+export default function MenuItemCard({
+  item,
+  locale,
+  currency,
+  className,
+}: {
+  item: MenuItem;
+  locale: string;
+  currency: string;
+  className?: string;
 }) {
+  const name = locale === "ar" ? item.name.ar : item.name.en;
+  const description = locale === "ar" ? item.description.ar : item.description.en;
+
+  const imgSrc = useMemo(
+    () => `/${String(item.image || "").replace(/^\/+/, "")}`,
+    [item.image]
+  );
+
+  const [qty, setQty] = useState<number>(0);
+
+  useEffect(() => {
+    const sync = () => {
+      const q =
+        window.getCartItemQty?.(item.id) ??
+        readLocalQty(item.id);
+      setQty(Number(q || 0));
+    };
+
+    sync();
+    window.addEventListener("kahramana:cart", sync as EventListener);
+    return () => window.removeEventListener("kahramana:cart", sync as EventListener);
+  }, [item.id]);
+
+  const inc = () => {
+    window.addToCart?.(item.id, name, item.price, imgSrc);
+    setQty((q) => q + 1);
+  };
+
+  const dec = () => {
+    const next = Math.max(0, qty - 1);
+    window.setCartQty?.(item.id, next);
+    setQty(next);
+  };
+
   return (
     <article
       className={cn(
-        "flex gap-3 overflow-hidden rounded-2xl border group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5",
+        "group relative overflow-hidden rounded-[var(--radius-3xl)] border bg-[var(--bg-tertiary)]/30 shadow-[var(--shadow-1)] transition-[transform,border-color] duration-[var(--motion-mid)] hover:-translate-y-0.5 hover:border-[var(--color-gold)]/30",
         className
       )}
-      style={{
-        background: "var(--bg-secondary)",
-        borderColor: "var(--border-subtle)",
-        boxShadow: "var(--shadow-1)"
-      }}
+      style={{ borderColor: "var(--border-subtle)" }}
     >
-      {/* Image */}
-      <div className="relative w-[112px] shrink-0 overflow-hidden" style={{ aspectRatio: "1/1" }}>
+      <div className="relative aspect-[16/11] w-full overflow-hidden">
         <Image
-          src={`/${item.image}`}
-          alt={locale === "ar" ? item.name.ar : item.name.en}
-          fill className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="112px"
+          src={imgSrc}
+          alt={name}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-[var(--motion-slow)] group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {item.featured ? (
+          <div
+            className="absolute top-[var(--space-3)] inline-flex items-center rounded-pill px-[var(--space-3)] py-[var(--space-1)] text-[var(--fs-100)] font-extrabold"
+            style={{
+              background: "var(--color-gold)",
+              color: "var(--bg-primary)",
+              insetInlineStart: "var(--space-3)",
+              border: "1px solid var(--color-border)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            {locale === "ar" ? "مميز" : "Featured"}
+          </div>
+        ) : null}
       </div>
 
-      <div className="flex flex-col justify-between flex-1 py-3.5 pe-4 gap-1 min-w-0">
-        <div>
-          {item.featured && (
-            <span
-              className="inline-flex items-center gap-1.5 text-[9px] font-black px-2.5 py-1 rounded-full mb-1.5 uppercase tracking-wider"
-              style={{ background: "var(--bg-gold-badge)", color: "var(--brand-gold)" }}
-            >
-              <span className="w-1 h-1 rounded-full bg-[var(--brand-gold)] animate-pulse" />
-              {locale === "ar" ? "مميز" : "Featured"}
-            </span>
-          )}
-          <h3 className="text-[0.9375rem] font-bold leading-tight group-hover:text-[var(--brand-gold)] transition-colors truncate" style={{ color: "var(--text-body)" }}>
-            {locale === "ar" ? item.name.ar : item.name.en}
-          </h3>
-          <p className="text-[0.8125rem] leading-relaxed mt-1 line-clamp-2 opacity-70" style={{ color: "var(--text-muted)" }}>
-            {locale === "ar" ? item.description.ar : item.description.en}
-          </p>
-        </div>
-        <div className="flex items-center justify-between mt-1">
-          <div
-            className="text-[0.9375rem] font-black flex items-baseline gap-1"
-            style={{ color: "var(--brand-gold)" }}
-          >
-            {item.price.toFixed(3)}
-            <span className="font-bold text-[10px] uppercase opacity-70">{currency}</span>
+      <div className="p-[var(--space-4)]">
+        <h3 className="text-[var(--fs-400)] font-extrabold line-clamp-2" style={{ color: "var(--text-on-dark)" }}>{name}</h3>
+        <p className="mt-[var(--space-1)] text-[var(--fs-200)] line-clamp-2" style={{ color: "var(--color-text-muted)" }}>{description}</p>
+
+        <div className="mt-[var(--space-3)] flex items-center justify-between gap-[var(--space-3)]">
+          <div className="font-extrabold" style={{ color: "var(--color-text)" }}>
+            {item.price.toFixed(3)} {currency}
           </div>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              // @ts-ignore
-              window.addToCart?.(item.id, locale === 'ar' ? item.name.ar : item.name.en, item.price, `/${item.image}`);
+          <div
+            className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-2xl)] border px-[var(--space-2)] py-[var(--space-2)]"
+            style={{
+              borderColor: "var(--border-subtle)",
+              background: "rgba(255,255,255,.04)",
             }}
-            className="flex items-center justify-center w-9 h-9 rounded-2xl bg-[var(--brand-gold)] text-[var(--bg-primary)] shadow-[var(--shadow-gold)] group-hover:shadow-[var(--shadow-gold)] group-hover:scale-110 active:scale-95 transition-all"
+            aria-label={locale === "ar" ? "الكمية" : "Quantity"}
           >
-            <span className="text-2xl font-black leading-none">+</span>
-          </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                dec();
+              }}
+              disabled={qty <= 0}
+              className={cn(
+                "flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2xl)] border text-[var(--text-on-dark)] transition active:scale-95 duration-[var(--motion-fast)]",
+                qty <= 0 ? "opacity-40 cursor-not-allowed" : "hover:bg-white/5"
+              )}
+              style={{ borderColor: "var(--border-subtle)" }}
+              aria-label={locale === "ar" ? "نقص" : "Decrease"}
+              title={locale === "ar" ? "نقص" : "Decrease"}
+            >
+              −
+            </button>
+
+            <div className="min-w-6 text-center text-[var(--fs-200)] font-extrabold" style={{ color: "var(--text-on-dark)" }}>
+              {qty}
+            </div>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                inc();
+              }}
+              className="flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2xl)] transition active:scale-95 duration-[var(--motion-fast)] hover:shadow-[var(--shadow-gold)]"
+              style={{
+                background: "var(--color-gold)",
+                color: "var(--bg-primary)",
+                boxShadow: "var(--shadow-gold)"
+              }}
+              aria-label={locale === "ar" ? "زيادة" : "Increase"}
+              title={locale === "ar" ? "زيادة" : "Increase"}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </article>

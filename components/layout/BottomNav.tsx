@@ -3,14 +3,14 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, UtensilsCrossed, BookOpen, ChefHat, MessageCircle, Image as ImageLucide } from "lucide-react";
+import Icon from "@/components/ui/Icon";
 
 const TABS = [
-  { key: "home", path: "", Icon: Home },
-  { key: "menu", path: "/menu", Icon: UtensilsCrossed },
-  { key: "story", path: "/our-story", Icon: BookOpen },
-  { key: "gallery", path: "/gallery", Icon: ImageLucide },
-  { key: "contact", path: "/branches", Icon: MessageCircle },
+  { key: "home", path: "" },
+  { key: "menu", path: "/menu" },
+  { key: "story", path: "/our-story" },
+  { key: "gallery", path: "/gallery" },
+  { key: "contact", path: "/branches" },
 ] as const;
 
 export default function BottomNav() {
@@ -20,21 +20,21 @@ export default function BottomNav() {
 
   return (
     <nav
-      className="fixed bottom-6 inset-x-4 z-50 md:hidden flex justify-center"
+      className="fixed bottom-6 inset-x-4 z-nav md:hidden flex justify-center"
       style={{
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
       <div
-        className="flex items-center justify-between px-4 py-2 w-full max-w-md shadow-[0_8px_32px_rgba(0,0,0,0.6)] border border-[var(--border-subtle)]"
+        className="flex items-center justify-between px-4 py-2 w-full max-w-md shadow-3 border border-1"
         style={{
-          background: "var(--bg-primary)",
+          background: "var(--color-coffee)",
           backdropFilter: "blur(20px)",
           borderRadius: "var(--radius-pill)",
-          height: "var(--nav-bottom-h)",
+          height: "var(--tap-min)",
         }}
       >
-        {TABS.map(({ key, path, Icon: TabIcon }) => {
+        {TABS.map(({ key, path }) => {
           const href = `/${locale}${path}`;
           const active = path === ""
             ? pathname === `/${locale}` || pathname === `/${locale}/`
@@ -45,26 +45,30 @@ export default function BottomNav() {
               key={key}
               href={href}
               aria-current={active ? "page" : undefined}
-              className="flex-1 flex flex-col items-center justify-center gap-1 no-underline transition-all"
-              style={{ color: active ? "var(--brand-gold)" : "var(--text-muted)", opacity: active ? 1 : 0.8 }}
+              className="flex-1 flex flex-col items-center justify-center gap-1 no-underline transition-[color,opacity] duration-2"
+              style={{ color: active ? "var(--color-gold)" : "var(--text-muted)", opacity: active ? 1 : 0.8 }}
             >
               <div
-                className="flex items-center justify-center rounded-full transition-all duration-200"
+                className="flex items-center justify-center rounded-pill transition-[background-color,transform] duration-2"
                 style={{
-                  width: 48, height: 48, /* var(--tap-target) = 48px */
-                  background: active ? "var(--bg-secondary)" : "transparent",
+                  width: "var(--tap-min)", height: "var(--tap-min)",
+                  background: active ? "var(--dark-walnut)" : "transparent",
                 }}
               >
-                {/* 20 = --icon-size-sm (active) | 16 = --icon-size-xs (inactive) */}
-                <TabIcon
-                  size={active ? 20 : 16}
-                  strokeWidth={active ? 2.5 : 1.75}
+                <Icon
+                  name={key === "home" ? "home" :
+                    key === "menu" ? "restaurant_menu" :
+                      key === "story" ? "history" :
+                        key === "gallery" ? "image" :
+                          key === "contact" ? "location_on" : "link"}
+                  size={active ? "sm" : "xs"}
+                  filled={active}
                 />
               </div>
               <span
-                className="leading-none text-[9px] font-bold"
+                className="leading-none text-[9px] fontWeight-black"
                 style={{
-                  color: active ? "var(--brand-gold)" : "var(--text-muted)",
+                  color: active ? "var(--color-gold)" : "var(--text-muted)",
                 }}
               >
                 {t(key as any)}

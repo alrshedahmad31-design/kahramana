@@ -21,7 +21,15 @@
     "categories_subtitle": "Over 109 premium Iraqi dishes awaiting you",
     "reviews_title": "Guest Experiences",
     "reviews_subtitle": "Testimonials we take pride in",
-    "verified": "Verified Visitor"
+    "verified": "Verified Visitor",
+    "stats_years_num": "8",
+    "stats_years_label": "Years of Excellence",
+    "stats_dishes_num": "109+",
+    "stats_dishes_label": "Signature Dishes",
+    "stats_branches_num": "2",
+    "stats_branches_label": "Branches in Bahrain",
+    "stats_rating_num": "4.5",
+    "stats_rating_label": "1400+ Reviews"
   },
   "menu": {
     "hero_title": "Baghdad Flavors on Your Table",

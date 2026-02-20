@@ -91,16 +91,15 @@ i18n/
 
 ## Design Tokens
 
-All tokens are in `app/globals.css`. Key variables:
+All tokens are in `styles/tokens.css`. Key variables:
 
 ```css
---color-bg             /* lace: #f5ebdb */
---color-surface        /* white */
---color-primary        /* gold: #d9ae24 */
---color-secondary      /* saddle: #944e2c */
---color-text           /* walnut: #5f311a */
---color-text-muted     /* coffee: #6e4531 */
---color-border         /* rgba(95,49,26,.18) */
+--color-gold           /* #C5A059 */
+--color-saddle         /* #944e2c */
+--color-coffee         /* #452C23 */
+--color-walnut         /* #2d1d17 */
+--bg-primary           /* var(--color-coffee) */
+--text-primary         /* var(--color-gold) */
 ```
 
 ---
@@ -127,6 +126,12 @@ components.json is not included — run init first.
 
 ## Icon System
 
-Uses **Material Symbols Rounded** (Google CDN in globals.css).
-Usage: `<span className="ms">home</span>`
-Filled: `<span className="ms ms-filled">home</span>`
+Uses **Material Symbols Rounded** (via `Icon` component).
+Standardized on single source of truth for consistent aesthetics.
+
+Usage:
+```tsx
+import Icon from "@/components/ui/Icon";
+
+<Icon name="home" size="sm" filled />
+```
