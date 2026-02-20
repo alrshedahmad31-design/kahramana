@@ -7,10 +7,10 @@
 :root {
    /* ── 1. Brand Primitives (Adopted Identity) ─────────────────────── */
 
-   --metallic-gold: #C5A059;
+   --metallic-gold: #d4af37;
    --saddle-brown: #944e2c;
-   --coffee-bean: #452C23;
-   --dark-walnut: #2d1d17;
+   --coffee-bean: #6e4531;
+   --dark-walnut: #5f311a;
    --base-saddle: var(--saddle-brown);
 
    /* Semantic Status Colors */
@@ -34,6 +34,9 @@
    --bg-muted: rgba(212, 175, 55, 0.08);
    --bg-white-low: rgba(255, 255, 255, 0.05);
    --bg-white-mid: rgba(255, 255, 255, 0.1);
+   --bg-white-ultra-low: rgba(255, 255, 255, 0.05);
+
+   --bg-tertiary: rgba(95, 49, 26, 0.6);
 
    --text-primary: var(--color-gold);
    --text-body: #f8f4e1;
@@ -42,14 +45,6 @@
    /* Muted Gold/Sand */
    --text-on-gold: #000000;
    --text-white-subtle: rgba(255, 255, 255, 0.5);
-   /* Accessibility: Black text on gold */
-
-   /* ── 2b. Breakpoints ─────────────────────────────────────────── */
-   --bp-xs: 480px;
-   --bp-sm: 640px;
-   --bp-md: 768px;
-   --bp-lg: 1024px;
-   --bp-xl: 1280px;
 
    --border-1: rgba(212, 175, 55, 0.12);
    --border-2: rgba(212, 175, 55, 0.25);
@@ -61,23 +56,14 @@
    --font-primary: 'Cairo', system-ui, sans-serif;
 
    --fs-900: 2.5rem;
-   /* 40px */
    --fs-800: 2rem;
-   /* 32px */
    --fs-700: 1.5rem;
-   /* 24px */
    --fs-600: 1.25rem;
-   /* 20px */
    --fs-500: 1.125rem;
-   /* 18px */
    --fs-400: 1rem;
-   /* 16px */
    --fs-300: 0.875rem;
-   /* 14px */
    --fs-200: 0.75rem;
-   /* 12px */
    --fs-100: 0.625rem;
-   /* 10px */
 
    --lh-tight: 1.2;
    --lh-base: 1.6;
@@ -89,31 +75,18 @@
 
    /* ── 4. Spacing Scale ──────────────────────────────────────────── */
    --space-1: 0.25rem;
-   /* 4px */
    --space-2: 0.5rem;
-   /* 8px */
    --space-3: 0.75rem;
-   /* 12px */
    --space-4: 1rem;
-   /* 16px */
    --space-5: 1.5rem;
-   /* 24px */
    --space-6: 2rem;
-   /* 32px */
    --space-7: 3rem;
-   /* 48px */
    --space-8: 4rem;
-   /* 64px */
    --space-9: 5rem;
-   /* 80px */
    --space-10: 6rem;
-   /* 96px */
    --space-12: 8rem;
-   /* 128px */
    --space-14: 10rem;
-   /* 160px */
    --space-16: 12rem;
-   /* 192px */
 
    --section-pad-y: var(--space-7);
    --grid-gap: var(--space-4);
@@ -122,15 +95,10 @@
 
    /* ── 5. Radius Scale ───────────────────────────────────────────── */
    --radius-1: 0.5rem;
-   /* 8px */
    --radius-2: 1rem;
-   /* 16px */
    --radius-3: 1.5rem;
-   /* 24px */
    --radius-4: 2rem;
-   /* 32px */
    --radius-5: 2.5rem;
-   /* 40px */
    --radius-pill: 9999px;
 
    /* ── 6. Shadows & Glows ────────────────────────────────────────── */
@@ -161,22 +129,12 @@
    --motion-slow: var(--dur-3);
    --ease-std: var(--ease-out);
 
-   /* Spring Config (Logical) */
-   --spring-stiff: 300;
-   --spring-damp: 30;
-   --spring-mass: 1;
-   --spring-standard: spring(1 300 30 0);
-   --spring-bouncy: spring(1 400 20 0);
-   /* CSS spring proposal syntax placeholder */
-
    /* ── 9. Z-Index Scale ──────────────────────────────────────────── */
    --z-base: 0;
    --z-nav: 50;
    --z-backdrop: 55;
    --z-drawer: 60;
    --z-modal: 70;
-   --z-modal-content: 71;
-   --z-modal-close: 72;
    --z-overlay: 75;
    --z-popover: 80;
    --z-toast: 90;
@@ -185,30 +143,28 @@
    --spotlight-gold: color-mix(in srgb, var(--color-gold), transparent 85%);
    --modal-overlay-bg: color-mix(in srgb, var(--color-coffee) 80%, transparent);
    --bg-overlay-deep: rgba(0, 0, 0, 0.85);
-   --pattern-size-lg: 400px;
    --nav-drawer-w: 300px;
    --nav-top-h: 80px;
    --hero-h-sm: 360px;
    --hero-h-md: 420px;
    --hero-h-lg: 520px;
    --menu-sticky-offset: -160px;
-   --input-icon-offset: 2.75rem;
    --hero-gallery-h: 500px;
    --menu-item-img-size: 112px;
 
-   /* ── 10. Icon Sizes ───────────────────────────────────────────── */
+   /* ── 11. Icon Sizes ───────────────────────────────────────────── */
    --icon-size-xs: 16px;
    --icon-size-sm: 20px;
    --icon-size-md: 24px;
    --icon-size-lg: 28px;
 
-   /* ── 11. Accessibility ─────────────────────────────────────────── */
+   /* ── 12. Accessibility ─────────────────────────────────────────── */
    --tap-min: 44px;
    --focus-width: 2px;
    --focus-color: var(--color-saddle);
    --focus-outline: var(--focus-width) solid var(--focus-color);
 
-   /* ── 12. Gradients ─────────────────────────────────────────────── */
+   /* ── 13. Gradients ─────────────────────────────────────────────── */
    --gold-stop-deep: #5f4b21;
    --gold-stop-mid: #8a6d29;
    --gold-stop-light: #fef3c7;
@@ -216,21 +172,33 @@
 
    --gold-gradient-soft: linear-gradient(135deg, var(--color-gold) 0%, #f1d279 50%, var(--color-gold) 100%);
    --gold-gradient-rich: linear-gradient(135deg, var(--gold-stop-mid) 0%, var(--color-gold) 50%, var(--gold-stop-mid) 100%);
-   --gold-gradient-liquid: linear-gradient(110deg,
-         var(--gold-stop-deep) 0%,
-         var(--gold-stop-mid) 15%,
-         var(--color-gold) 30%,
-         var(--gold-stop-light) 45%,
-         var(--gold-stop-max) 50%,
-         var(--gold-stop-light) 55%,
-         var(--color-gold) 70%,
-         var(--gold-stop-mid) 85%,
-         var(--gold-stop-deep) 100%);
 
-   /* ── End of Tokens ── */
+   /* ── 14. Semantic Aliases (Restoration & Compatibility) ───────── */
+   --brand-gold: var(--metallic-gold);
+   --brand-spice: var(--saddle-brown);
+   --brand-saddle: var(--saddle-brown);
+
+   --color-border: var(--border-1);
+   --color-surface: var(--bg-surface);
+   --color-text: var(--text-primary);
+   --color-text-muted: var(--text-muted);
+
+   --radius-2xl: 1rem;
+   /* = --radius-2 */
+   --radius-3xl: 1.5rem;
+   /* = --radius-3 */
+
+   --shadow-gold: var(--glow-gold);
+   --nav-bottom-h: 4.5rem;
+   --text-body-lh: 1.6;
+   --text-on-dark: var(--text-body);
 }
 
-/* ── LTR override layer ──────────────────────────────────────────
-   To switch a subtree to LTR, add dir="ltr" to any ancestor.
-   No tokens change; only logical-property direction flips via CSS.
-   ─────────────────────────────────────────────────────────────── */
+/* ── 15. Breakpoints (Reference for Tailwind mapping) ───────────── */
+/* 
+   xs: 480px  (--bp-xs)
+   sm: 640px  (--bp-sm)
+   md: 768px  (--bp-md)
+   lg: 1024px (--bp-lg)
+   xl: 1280px (--bp-xl)
+*/
