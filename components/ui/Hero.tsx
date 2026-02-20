@@ -130,7 +130,6 @@ export default function Hero({
           className="font-black leading-tight section-title-gold"
           style={{
             fontSize: "clamp(2rem, 6vw, var(--fs-900))",
-            textShadow: "var(--shadow-text-lg)",
           }}
         >
           {title}

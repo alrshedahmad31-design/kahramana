@@ -172,6 +172,16 @@
 
    --gold-gradient-soft: linear-gradient(135deg, var(--color-gold) 0%, #f1d279 50%, var(--color-gold) 100%);
    --gold-gradient-rich: linear-gradient(135deg, var(--gold-stop-mid) 0%, var(--color-gold) 50%, var(--gold-stop-mid) 100%);
+   --gold-gradient-liquid: linear-gradient(110deg,
+         var(--gold-stop-deep) 0%,
+         var(--gold-stop-mid) 15%,
+         var(--color-gold) 30%,
+         var(--gold-stop-light) 45%,
+         var(--gold-stop-max) 50%,
+         var(--gold-stop-light) 55%,
+         var(--color-gold) 70%,
+         var(--gold-stop-mid) 85%,
+         var(--gold-stop-deep) 100%);
 
    /* ── 14. Semantic Aliases (Restoration & Compatibility) ───────── */
    --brand-gold: var(--metallic-gold);
