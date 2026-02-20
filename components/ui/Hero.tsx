@@ -114,7 +114,7 @@ export default function Hero({
       >
         {tagline && (
           <p
-            className="fontWeight-black uppercase tracking-wider"
+            className="font-black uppercase tracking-wider"
             style={{
               fontSize: "var(--fs-300)",
               color: "var(--metallic-gold)",
@@ -127,7 +127,7 @@ export default function Hero({
         )}
 
         <h1
-          className="fontWeight-black leading-tight section-title-gold"
+          className="font-black leading-tight section-title-gold"
           style={{
             fontSize: "clamp(2rem, 6vw, var(--fs-900))",
             textShadow: "var(--shadow-text-lg)",
@@ -137,7 +137,7 @@ export default function Hero({
         </h1>
 
         <p
-          className="fontWeight-semi"
+          className="font-semibold"
           style={{
             fontSize: "clamp(1rem, 2.5vw, var(--fs-600))",
             lineHeight: "var(--lh-tight)",
@@ -154,8 +154,8 @@ export default function Hero({
             {cta && (
               <Link
                 href={cta.href}
-                className="inline-flex items-center justify-center gap-2 fontWeight-black no-underline
-                           active:scale-95 hover:brightness-105 transition-[filter,transform,box-shadow] duration-2"
+                className="inline-flex items-center justify-center gap-2 font-black no-underline
+                           active:scale-95 hover:brightness-105 transition-[filter,transform,box-shadow] duration-[var(--dur-2)]"
                 style={{
                   minHeight: "var(--tap-min)",
                   paddingInline: "var(--space-6)",
@@ -172,8 +172,8 @@ export default function Hero({
             {ctaSecondary && (
               <Link
                 href={ctaSecondary.href}
-                className="inline-flex items-center justify-center gap-2 fontWeight-black no-underline
-                           active:scale-95 hover:bg-white/20 transition-[background-color,transform] duration-2"
+                className="inline-flex items-center justify-center gap-2 font-black no-underline
+                           active:scale-95 hover:bg-white/20 transition-[background-color,transform] duration-[var(--dur-2)]"
                 style={{
                   minHeight: "var(--tap-min)",
                   paddingInline: "var(--space-6)",

@@ -131,7 +131,7 @@ export default async function GalleryPage({ params }: { params: { locale: string
     ];
 
     return (
-        <main className="bg-coffee min-h-screen pb-[var(--space-16)]">
+        <main className="min-h-screen pb-[var(--space-16)]" style={{ background: "var(--bg-primary)" }}>
             <Hero
                 title={locale === "ar" ? "معرض الصور" : "Gallery"}
                 subtitle={locale === "ar" ? "قصة تُروى بالألوان والمطعم" : "A story told in colors and flavors"}
@@ -149,9 +149,9 @@ export default async function GalleryPage({ params }: { params: { locale: string
                         />
                     </div>
                     <div className="hidden md:block">
-                        <div className="flex gap-[var(--space-2)] text-gold/40 text-200 font-black uppercase tracking-[0.4em] leading-none mb-[var(--space-4)]">
+                        <div className="flex gap-[var(--space-2)] text-200 font-black uppercase tracking-[0.4em] leading-none mb-[var(--space-4)]" style={{ color: "var(--color-gold)", opacity: 0.4 }}>
                             <span>Ambiance</span>
-                            <span className="w-[var(--space-12)] h-px bg-gold/20 self-center" />
+                            <span className="w-[var(--space-12)] h-px self-center" style={{ background: "var(--color-gold)", opacity: 0.2 }} />
                             <span>Authenticity</span>
                         </div>
                     </div>
@@ -160,12 +160,12 @@ export default async function GalleryPage({ params }: { params: { locale: string
                 <GalleryGrid items={galleryItems} />
 
                 <div className="mt-[var(--space-16)] text-center relative">
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
-                    <div className="relative inline-block bg-coffee px-[var(--space-12)]">
-                        <p className="text-white/30 text-100 font-black uppercase tracking-[0.5em] mb-[var(--space-4)]">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px" style={{ background: "linear-gradient(to right, transparent, var(--color-gold), transparent)", opacity: 0.1 }} />
+                    <div className="relative inline-block px-[var(--space-12)]" style={{ background: "var(--bg-primary)" }}>
+                        <p className="text-100 font-black uppercase tracking-[0.5em] mb-[var(--space-4)]" style={{ color: "var(--text-body)", opacity: 0.3 }}>
                             Kahramana Baghdad
                         </p>
-                        <p className="text-white/50 text-400 max-w-xl italic mx-auto font-medium">
+                        <p className="text-400 max-w-xl italic mx-auto font-medium" style={{ color: "var(--text-body)", opacity: 0.5 }}>
                             {locale === "ar"
                                 ? "كل زاوية تروي قصة، وكل طبق هو فصل من فصول الجودة."
                                 : "Every corner tells a story, and every dish is a chapter of quality."}
