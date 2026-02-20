@@ -35,7 +35,7 @@ export default function MenuTabs({ categories, items, locale, labels }: {
   return (
     <div className="flex flex-col gap-8">
       <div
-        className="sticky z-30 space-y-5 py-4 -mt-4 bg-primary/95 backdrop-blur-xl border-b-1 shadow-1"
+        className="sticky z-30 space-y-5 py-4 -mt-4 bg-walnut/95 backdrop-blur-xl border-b-1 shadow-1"
         style={{ top: "var(--nav-top-h)", borderBottomColor: "var(--border-1)" }}
       >
         <div className="relative">
@@ -50,7 +50,7 @@ export default function MenuTabs({ categories, items, locale, labels }: {
             placeholder={labels.search_placeholder}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            className="w-full rounded-2 border-1 fs-300 bg-muted outline-none transition-[border-color,box-shadow] duration-2 placeholder:text-muted focus:border-gold"
+            className="w-full rounded-2 border-1 text-300 bg-muted outline-none transition-[border-color,box-shadow] duration-2 placeholder:text-muted focus:border-gold"
             style={{
               height: "var(--tap-min)",
               paddingInlineStart: "var(--input-icon-offset)", paddingInlineEnd: "1rem",
@@ -63,8 +63,8 @@ export default function MenuTabs({ categories, items, locale, labels }: {
         <div className="flex gap-2 overflow-x-auto pb-1 hide-scrollbar">
           <button
             onClick={() => setCat("all")}
-            className={cn("flex items-center gap-1.5 shrink-0 px-5 rounded-pill fs-100 fontWeight-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
-              cat === "all" ? "border-transparent" : "bg-muted border-white/5"
+            className={cn("flex items-center gap-1.5 shrink-0 px-5 rounded-pill text-100 font-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
+              cat === "all" ? "border-transparent" : "bg-white/5 border-white/5"
             )}
             style={{
               height: "var(--tap-min)",
@@ -81,8 +81,8 @@ export default function MenuTabs({ categories, items, locale, labels }: {
             <button
               key={c.id}
               onClick={() => setCat(c.id)}
-              className={cn("flex items-center gap-2 shrink-0 px-5 rounded-pill fs-100 fontWeight-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
-                cat === c.id ? "border-transparent" : "bg-muted border-white/5"
+              className={cn("flex items-center gap-2 shrink-0 px-5 rounded-pill text-100 font-black border-1 transition-[background-color,color,transform,box-shadow] duration-2 active:scale-95",
+                cat === c.id ? "border-transparent" : "bg-white/5 border-white/5"
               )}
               style={{
                 height: "var(--tap-min)",

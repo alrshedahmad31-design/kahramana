@@ -48,13 +48,13 @@ export default async function EventsPage({ params }: { params: { locale: string 
             {features.map(({ key, iconName }) => (
               <div
                 key={key}
-                className="flex flex-col items-center gap-[var(--space-3)] p-[var(--space-5)] rounded-[var(--radius-3xl)] text-center border"
+                className="flex flex-col items-center gap-[var(--space-3)] p-[var(--space-5)] rounded-[var(--radius-3)] text-center border"
                 style={{ background: "var(--color-surface)", borderColor: "var(--color-border)", boxShadow: "var(--shadow-1)" }}
               >
-                <div className="w-[var(--space-14)] h-[var(--space-14)] rounded-[var(--radius-2xl)] flex items-center justify-center" style={{ background: "var(--bg-muted)" }}>
+                <div className="w-[var(--space-14)] h-[var(--space-14)] rounded-[var(--radius-2)] flex items-center justify-center" style={{ background: "var(--bg-muted)" }}>
                   <Icon name={iconName} size="lg" style={{ color: "var(--color-saddle)" }} />
                 </div>
-                <p className="text-[var(--fs-300)] font-semibold leading-snug" style={{ color: "var(--color-text)" }}>
+                <p className="text-300 font-semibold leading-snug" style={{ color: "var(--color-text)" }}>
                   {t(key as "feature1" | "feature2" | "feature3" | "feature4")}
                 </p>
               </div>
@@ -70,19 +70,19 @@ export default async function EventsPage({ params }: { params: { locale: string 
 
         {/* CTA block */}
         <div
-          className="mt-[var(--space-12)] p-[var(--space-8)] rounded-[var(--radius-3xl)] flex flex-col items-center gap-[var(--space-5)] text-center"
+          className="mt-[var(--space-12)] p-[var(--space-8)] rounded-[var(--radius-3)] flex flex-col items-center gap-[var(--space-5)] text-center"
           style={{ background: "linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)" }}
         >
-          <p className="text-[var(--fs-500)] font-black text-white">
+          <p className="text-500 font-black text-white">
             {locale === "ar" ? "هل تريد حجز مناسبة معنا؟" : "Want to book an event with us?"}
           </p>
           <a
             href={brand.whatsapp_url} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-2xl)] font-bold no-underline transition-[opacity,transform] hover:opacity-90 active:scale-95 duration-[var(--motion-fast)]"
+            className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-2)] font-bold no-underline transition-[opacity,transform] hover:opacity-90 active:scale-95 duration-[var(--motion-fast)]"
             style={{
               height: "var(--tap-min)", paddingInline: "var(--space-7)",
               background: "var(--color-gold)", color: "var(--bg-primary)",
-              boxShadow: "var(--shadow-gold)",
+              boxShadow: "var(--glow-gold)",
             }}
           >
             <Icon name="chat" />

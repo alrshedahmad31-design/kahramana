@@ -89,7 +89,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                     <div className="flex-1 flex flex-col justify-center">
                         <div className="space-y-6">
                             <div className="flex flex-wrap items-center gap-3">
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill fs-300 fontWeight-black"
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill text-300 font-black"
                                     style={{
                                         background: open ? "color-mix(in srgb, var(--color-success) 10%, transparent)" : "color-mix(in srgb, var(--saddle-brown) 10%, transparent)",
                                         color: open ? "var(--color-success)" : "var(--saddle-brown)"
@@ -104,7 +104,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                                     {open ? t.open_now : t.closed_now}
                                 </div>
                                 {!open && (
-                                    <span className="fs-300 fontWeight-semi opacity-80" style={{ color: "var(--text-muted)" }}>
+                                    <span className="text-300 font-semi opacity-80" style={{ color: "var(--text-muted)" }}>
                                         {t.opens_at.replace("{{time}}", branch.opens)}
                                     </span>
                                 )}
@@ -122,20 +122,20 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                                         <Icon name="location_on" />
                                     </div>
                                     <div>
-                                        <h4 className="fs-300 fontWeight-black opacity-60 uppercase tracking-widest mb-1">{t.address_label}</h4>
-                                        <p className="fs-500 fontWeight-black leading-tight">{branchAddress}</p>
+                                        <h4 className="text-300 font-black opacity-60 uppercase tracking-widest mb-1">{t.address_label}</h4>
+                                        <p className="text-500 font-black leading-tight">{branchAddress}</p>
                                     </div>
                                 </div>
 
                                 {/* Info: Phone */}
                                 <div className="flex items-start gap-5">
-                                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
+                                    <div className="w-12 h-12 rounded-[var(--radius-3)] flex items-center justify-center shrink-0"
                                         style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}>
                                         <Icon name="call" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-bold opacity-60 uppercase tracking-widest mb-1">{t.call}</h4>
-                                        <a href={`tel:${branch.phone.replace(/[\s\+]/g, '')}`} className="text-xl font-bold no-underline hover:underline" style={{ color: 'var(--color-text)' }}>
+                                        <h4 className="text-300 font-bold opacity-60 uppercase tracking-widest mb-1">{t.call}</h4>
+                                        <a href={`tel:${branch.phone.replace(/[\s\+]/g, '')}`} className="text-500 font-bold no-underline hover:underline" style={{ color: 'var(--color-text)' }}>
                                             <span dir="ltr">{branch.phone}</span>
                                         </a>
                                     </div>
@@ -143,13 +143,13 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
 
                                 {/* Info: Hours */}
                                 <div className="flex items-start gap-5">
-                                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
+                                    <div className="w-12 h-12 rounded-[var(--radius-3)] flex items-center justify-center shrink-0"
                                         style={{ background: "var(--bg-tertiary)", color: "var(--brand-gold)" }}>
                                         <Icon name="schedule" />
                                     </div>
                                     <div>
-                                        <h4 className="text-sm font-bold opacity-60 uppercase tracking-widest mb-1">{t.hours}</h4>
-                                        <p className="text-lg font-medium">{branchHours}</p>
+                                        <h4 className="text-300 font-bold opacity-60 uppercase tracking-widest mb-1">{t.hours}</h4>
+                                        <p className="text-500 font-medium">{branchHours}</p>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <a
                                     href={branch.maps} target="_blank" rel="noopener noreferrer"
-                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black text-white transition-[transform,box-shadow,filter] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 shadow-2"
+                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] font-black text-white transition-[transform,box-shadow,filter] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 shadow-2"
                                     style={{ background: "var(--saddle-brown)", boxShadow: "var(--shadow-3)" }}
                                 >
                                     <Icon name="location_on" />
@@ -166,7 +166,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
 
                                 <a
                                     href={`tel:${branch.phone.replace(/[\s\+]/g, '')}`}
-                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white/10 active:scale-95 border-[var(--border-thin)]"
+                                    className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] font-black transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white-mid active:scale-95 border-[var(--border-thin)]"
                                     style={{ borderColor: "var(--border-1)", color: "var(--text-body)" }}
                                 >
                                     <Icon name="call" />
@@ -175,7 +175,7 @@ export default function BranchSection({ branch, locale, t, talabatUrl }: Props) 
 
                                 <a
                                     href={`/${locale}/menu`}
-                                    className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] fontWeight-black transition-[transform,background-color,border-color] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 border-[var(--border-thin)] border-white/10 shadow-1"
+                                    className="flex-1 min-w-[200px] inline-flex items-center justify-center gap-[var(--space-2)] px-[var(--space-6)] py-[var(--space-4)] rounded-[var(--radius-1)] font-black transition-[transform,background-color,border-color] duration-[var(--motion-mid)] hover:scale-[1.02] active:scale-95 border-[var(--border-thin)] border-[var(--border-subtle)] shadow-1"
                                     style={{ background: "var(--bg-muted)", color: "var(--color-gold)" }}
                                 >
                                     <Icon name="restaurant_menu" size="sm" />

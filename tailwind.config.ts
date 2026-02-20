@@ -9,6 +9,13 @@ const config: Config = {
     "./data/**/*.json",
   ],
   theme: {
+    screens: {
+      xs: "480px", // fallback or better: use var(--bp-xs)
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
     extend: {
       colors: {
         gold: "var(--color-gold)",
@@ -16,12 +23,24 @@ const config: Config = {
         coffee: "var(--color-coffee)",
         walnut: "var(--color-walnut)",
         lace: "var(--text-body)",
+        primary: "var(--color-gold)",
+        secondary: "var(--color-saddle)",
+        surface: "var(--bg-surface)",
+        muted: "var(--bg-muted)",
+        "text-muted": "var(--text-muted)",
         brand: {
           gold: "var(--color-gold)",
           saddle: "var(--color-saddle)",
           coffee: "var(--color-coffee)",
           walnut: "var(--color-walnut)",
-        }
+        },
+        "gold-fg": "var(--text-on-gold)",
+      },
+      fontWeight: {
+        reg: "var(--fw-reg)",
+        semi: "var(--fw-semi)",
+        bold: "var(--fw-bold)",
+        black: "var(--fw-black)",
       },
       fontFamily: {
         sans: ["var(--font-primary)", "system-ui", "sans-serif"],

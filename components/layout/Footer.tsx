@@ -42,12 +42,12 @@ export default async function Footer({ locale }: { locale: string }) {
                   <Image src="/assets/brand/logo.webp" alt="Kahramana" fill className="object-contain" />
                 </div>
                 <div>
-                  <h2 className="fs-600 fontWeight-black leading-tight">
+                  <h2 className="text-600 font-black leading-tight">
                     <span className="section-title-gold">
                       {locale === "ar" ? brand.name.ar : brand.name.en}
                     </span>
                   </h2>
-                  <p className="fs-100 fontWeight-semi tracking-[0.2em] uppercase text-muted opacity-80">
+                  <p className="text-100 font-semi tracking-[0.2em] uppercase text-muted opacity-80">
                     {t("tagline")}
                   </p>
                 </div>
@@ -87,7 +87,7 @@ export default async function Footer({ locale }: { locale: string }) {
               {links.map((l) => (
                 <Link
                   key={l.href} href={l.href}
-                  className="fs-300 fontWeight-semi no-underline text-body hover:text-gold hover:translate-x-1 transition-[color,transform] duration-2 inline-flex items-center gap-2 group"
+                  className="p-3 bg-white/5 rounded-pill text-white/60 hover:text-gold hover:bg-white-mid transition-all duration-4"
                 >
                   <span className="w-1.5 h-1.5 rounded-pill bg-gold opacity-0 group-hover:opacity-100 transition-opacity duration-2" />
                   {l.label}
@@ -107,13 +107,13 @@ export default async function Footer({ locale }: { locale: string }) {
                   key={b.id}
                   className="bg-muted p-[var(--space-5)] rounded-[var(--radius-2)] border-[var(--border-thin)] border-white/5 hover:border-gold/30 transition-colors duration-[var(--motion-mid)] group"
                 >
-                  <p className="fs-100 fontWeight-black text-gold opacity-60 uppercase tracking-widest mb-1">
+                  <p className="text-100 font-black text-gold opacity-60 uppercase tracking-widest mb-1">
                     <span dir="ltr">{b.phone}</span>
                   </p>
-                  <p className="fs-300 fontWeight-black text-body mb-1 group-hover:text-gold transition-colors duration-2">
+                  <p className="text-300 font-black text-body mb-1 group-hover:text-gold transition-colors duration-2">
                     {locale === "ar" ? b.name.ar : b.name.en}
                   </p>
-                  <p className="fs-200 leading-tight text-muted">
+                  <p className="text-200 leading-tight text-muted">
                     {locale === "ar" ? b.hours.ar : b.hours.en}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default async function Footer({ locale }: { locale: string }) {
               <div className="sm:col-span-2 mt-2">
                 <a
                   href={brand.whatsapp_url} target="_blank" rel="noopener noreferrer"
-                  className="relative group block overflow-hidden rounded-3xl p-px"
+                  className="relative group block overflow-hidden rounded-[var(--radius-3)] p-px"
                 >
                   {/* Glowing background on hover */}
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[var(--color-gold)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -134,8 +134,8 @@ export default async function Footer({ locale }: { locale: string }) {
                         <Icon name="chat" className="text-white" />
                       </div>
                       <div>
-                        <p className="fs-300 fontWeight-black text-white">{locale === "ar" ? "تحدث معنا عبر واتساب" : "Chat on WhatsApp"}</p>
-                        <p className="fs-100 text-white/60 fontWeight-semi">{locale === "ar" ? "الرد خلال دقائق قليلة" : "Replies within minutes"}</p>
+                        <p className="text-300 font-black text-white">{locale === "ar" ? "تحدث معنا عبر واتساب" : "Chat on WhatsApp"}</p>
+                        <p className="text-100 text-white/60 font-semi">{locale === "ar" ? "الرد خلال دقائق قليلة" : "Replies within minutes"}</p>
                       </div>
                     </div>
                     <div className="hidden sm:flex w-10 h-10 rounded-pill bg-white/10 items-center justify-center group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform duration-2">
@@ -150,15 +150,15 @@ export default async function Footer({ locale }: { locale: string }) {
 
         {/* 4. Semantic Copyright Footer */}
         <div className="mt-16 pt-8 border-t-1 border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-start">
-          <p className="fs-100 fontWeight-black text-muted tracking-widest uppercase">
+          <p className="text-100 font-black text-muted tracking-widest uppercase">
             © {new Date().getFullYear()} {locale === "ar" ? brand.name.ar : brand.name.en} — {t("rights")}
           </p>
           <div className="flex items-center gap-6">
-            <p className="fs-100 fontWeight-black text-muted tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-2 cursor-default">
+            <p className="text-100 font-black text-muted tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-2 cursor-default">
               Luxury Experience
             </p>
             <div className="w-1.5 h-1.5 rounded-pill bg-gold" />
-            <p className="fs-100 fontWeight-black text-muted tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-2 cursor-default">
+            <p className="text-100 font-black text-muted tracking-widest uppercase opacity-60 hover:opacity-100 transition-opacity duration-2 cursor-default">
               Baghdadi Soul
             </p>
           </div>

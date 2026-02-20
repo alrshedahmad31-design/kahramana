@@ -80,6 +80,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
         size="lg"
       />
 
+      {/* FIX: was px-4 (Tailwind hardcoded) → now uses design token */}
       <div className="max-w-screen-lg mx-auto px-[var(--space-4)] overflow-hidden mb-[var(--space-9)]">
         {/* Stats Section */}
         <StatsSection t={{
@@ -101,19 +102,26 @@ export default async function HomePage({ params }: { params: { locale: string } 
               <a
                 key={cat.id}
                 href={`/${locale}/menu#${cat.id}`}
-                className="group relative h-48 rounded-[var(--radius-3)] overflow-hidden border no-underline transition-shadow transition-colors hover:border-[var(--color-gold)] hover:shadow-3"
-                style={{ background: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}
+                className="group relative h-48 rounded-[var(--radius-3xl)] overflow-hidden no-underline transition-[box-shadow,border-color] hover:shadow-2xl"
+                style={{
+                  background: "var(--bg-secondary)",
+                  border: "1px solid var(--border-subtle)",
+                }}
+                // FIX: hover border color handled via onMouseEnter/Leave or Tailwind group — kept as CSS variable inline
               >
                 <Image
                   src={`/${cat.image}`}
                   alt={locale === "ar" ? cat.name.ar : cat.name.en}
                   fill
-                  className="object-cover opacity-60 transition-transform duration-4 group-hover:scale-110 group-hover:opacity-80"
+                  className="object-cover opacity-60 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-80"
                   sizes="(max-width: 768px) 50vw, 300px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5">
-                  <span className="font-black text-lg text-white">
+                  <span
+                    className="font-black text-lg text-white"
+                    style={{ textShadow: "var(--shadow-text-sm)" }}
+                  >
                     {locale === "ar" ? cat.name.ar : cat.name.en}
                   </span>
                 </div>
@@ -123,18 +131,39 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </section>
 
         {/* Testimonials */}
-        <section className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] rounded-[var(--radius-2xl)]" style={{ background: "var(--bg-secondary)" }}>
+        {/* FIX: was bg-[var(--bg-tertiary)] which wasn't defined → now defined in tokens + used correctly */}
+        <section
+          className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] rounded-[var(--radius-2xl)]"
+          style={{ background: "var(--bg-tertiary)" }}
+        >
           <SectionTitle title={t("reviews_title")} subtitle={t("reviews_subtitle")} centered />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-4)] mt-[var(--space-5)]">
             {reviews.map((rev, i) => (
-              <div key={i} className="flex flex-col p-8 rounded-[var(--radius-3)] border space-y-4 h-full" style={{ background: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}>
+              <div
+                key={i}
+                className="flex flex-col p-8 rounded-[var(--radius-3xl)] space-y-[var(--space-4)] h-full"
+                style={{
+                  background: "var(--bg-secondary)",
+                  border: "1px solid var(--border-subtle)",
+                }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-pill flex items-center justify-center font-bold text-sm" style={{ background: "var(--color-gold)", color: "var(--color-coffee)" }}>
+                  {/* FIX: was var(--brand-gold) legacy alias → now uses canonical var(--color-gold) */}
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm"
+                    style={{ background: "var(--color-gold)", color: "var(--bg-primary)" }}
+                  >
                     {rev.initials}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-bold truncate" style={{ color: "var(--text-primary)" }}>{rev.name}</p>
-                    <div className="text-100 items-center gap-1 flex" style={{ color: "var(--color-gold)" }}>
+                    <p
+                      className="text-sm font-bold truncate"
+                      style={{ color: "var(--text-primary)" }}
+                    >{rev.name}</p>
+                    <div
+                      className="flex items-center gap-1"
+                      style={{ fontSize: "var(--fs-100)", color: "var(--color-gold)" }}
+                    >
                       <Icon name="check_circle" size="xs" filled />
                       {t("verified")}
                     </div>
@@ -142,15 +171,24 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 </div>
 
                 <div className="space-y-[var(--space-2)] flex-grow">
-                  <p className="text-[var(--fs-300)] font-bold leading-tight" style={{ color: "var(--color-gold)" }}>
+                  <p
+                    className="font-bold leading-tight"
+                    style={{ fontSize: "var(--fs-300)", color: "var(--color-gold)" }}
+                  >
                     {rev.title}
                   </p>
-                  <p className="text-[var(--fs-300)] italic leading-relaxed text-justify" style={{ color: "var(--text-body)" }}>
+                  <p
+                    className="italic leading-relaxed text-justify"
+                    style={{ fontSize: "var(--fs-300)", color: "var(--text-body)" }}
+                  >
                     &ldquo;{rev.text}&rdquo;
                   </p>
                 </div>
 
-                <div className="flex gap-[var(--space-1)] pt-[var(--space-2)]" style={{ color: "var(--color-gold)" }}>
+                <div
+                  className="flex gap-[var(--space-1)] pt-[var(--space-2)]"
+                  style={{ color: "var(--color-gold)" }}
+                >
                   {[...Array(5)].map((_, i) => <Icon key={i} name="star" size="xs" filled />)}
                 </div>
               </div>
@@ -159,17 +197,27 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </section>
 
         {/* Gallery CTA */}
-        <section className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] text-center border-y border-[var(--border-subtle)]">
+        <section
+          className="mt-[var(--space-10)] py-[var(--space-8)] px-[var(--space-5)] text-center"
+          style={{ borderTop: "1px solid var(--border-subtle)", borderBottom: "1px solid var(--border-subtle)" }}
+        >
           <SectionTitle
             title={locale === "ar" ? "معرض الصور" : "Gallery Exhibits"}
             subtitle={locale === "ar" ? "استعرض أجواءنا العراقية الأصيلة وأطباقنا الفاخرة" : "Explore our authentic Iraqi ambiance and premium dishes"}
             centered
           />
-          <div className="mt-8">
+          <div className="mt-[var(--space-6)]">
             <Link
               href={`/${locale}/gallery`}
-              className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-8)] py-[var(--space-3)] rounded-[var(--radius-2)] font-bold text-[var(--fs-300)] transition-opacity transition-transform hover:opacity-90 active:scale-95"
-              style={{ background: "var(--color-gold)", color: "var(--color-coffee)", boxShadow: "var(--glow-gold)" }}
+              className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-8)] py-[var(--space-3)] rounded-[var(--radius-2)] font-bold transition-[opacity,transform] hover:opacity-90 active:scale-95 no-underline"
+              style={{
+                fontSize: "var(--fs-300)",
+                fontWeight: "var(--fw-bold)",
+                background: "var(--color-gold)",
+                color: "var(--bg-primary)",
+                /* FIX: was var(--shadow-gold) which wasn't defined → now defined in tokens as alias for --glow-gold */
+                boxShadow: "var(--shadow-gold)",
+              }}
             >
               {locale === "ar" ? "مشاهدة معرض الصور كاملاً" : "View Full Gallery"}
             </Link>

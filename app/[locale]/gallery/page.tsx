@@ -149,7 +149,7 @@ export default async function GalleryPage({ params }: { params: { locale: string
                         />
                     </div>
                     <div className="hidden md:block">
-                        <div className="flex gap-[var(--space-2)] text-gold/40 text-[var(--fs-200)] font-black uppercase tracking-[0.4em] leading-none mb-[var(--space-4)]">
+                        <div className="flex gap-[var(--space-2)] text-gold/40 text-200 font-black uppercase tracking-[0.4em] leading-none mb-[var(--space-4)]">
                             <span>Ambiance</span>
                             <span className="w-[var(--space-12)] h-px bg-gold/20 self-center" />
                             <span>Authenticity</span>
@@ -162,10 +162,10 @@ export default async function GalleryPage({ params }: { params: { locale: string
                 <div className="mt-[var(--space-16)] text-center relative">
                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
                     <div className="relative inline-block bg-coffee px-[var(--space-12)]">
-                        <p className="text-white/30 text-[var(--fs-100)] font-black uppercase tracking-[0.5em] mb-[var(--space-4)]">
+                        <p className="text-white/30 text-100 font-black uppercase tracking-[0.5em] mb-[var(--space-4)]">
                             Kahramana Baghdad
                         </p>
-                        <p className="text-white/50 text-[var(--fs-400)] max-w-xl italic mx-auto font-medium">
+                        <p className="text-white/50 text-400 max-w-xl italic mx-auto font-medium">
                             {locale === "ar"
                                 ? "كل زاوية تروي قصة، وكل طبق هو فصل من فصول الجودة."
                                 : "Every corner tells a story, and every dish is a chapter of quality."}

@@ -66,7 +66,7 @@ export default function BottomNav() {
                 />
               </div>
               <span
-                className="leading-none text-[9px] fontWeight-black"
+                className="leading-none text-100 font-black"
                 style={{
                   color: active ? "var(--color-gold)" : "var(--text-muted)",
                 }}

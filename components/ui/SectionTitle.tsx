@@ -20,11 +20,11 @@ export default function SectionTitle({
       centered && "text-center items-center",
       className
     )}>
-      <h2 className="fontWeight-black fs-800 md:fs-900 leading-tight tracking-[-0.02em]">
+      <h2 className="font-black text-800 md:text-900 leading-tight tracking-[-0.02em]">
         <span className="section-title-gold">{title}</span>
       </h2>
       {subtitle && (
-        <p className="fs-400 leading-tight max-w-2xl text-body opacity-70">
+        <p className="text-400 leading-tight max-w-2xl text-body opacity-70">
           {subtitle}
         </p>
       )}

@@ -41,24 +41,24 @@ export default async function RecipesPage({ params }: { params: { locale: string
         {recipesData.map((recipe) => (
           <article
             key={recipe.id} id={recipe.id}
-            className="mb-[var(--space-8)] p-[var(--space-6)] rounded-[var(--radius-3xl)] border scroll-mt-20"
+            className="mb-[var(--space-8)] p-[var(--space-6)] rounded-[var(--radius-3)] border scroll-mt-20"
             style={{ background: "var(--color-surface)", borderColor: "var(--color-border)", boxShadow: "var(--shadow-1)" }}
           >
             <div className="flex items-center gap-[var(--space-3)] mb-[var(--space-6)]">
               <div className="w-[var(--border-thick)] h-[var(--space-8)] rounded-pill" style={{ background: "var(--color-gold)" }} />
-              <h2 className="text-[var(--fs-500)] font-black" style={{ color: "var(--color-text)" }}>
+              <h2 className="text-500 font-black" style={{ color: "var(--color-text)" }}>
                 {locale === "ar" ? recipe.name.ar : recipe.name.en}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-[var(--space-6)]">
               <div>
-                <h3 className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)] font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
+                <h3 className="flex items-center gap-[var(--space-2)] text-300 font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
                   <Icon name="list" size="sm" /> {t("ingredients")}
                 </h3>
                 <ul className="flex flex-col gap-[var(--space-2)]">
                   {(locale === "ar" ? recipe.ingredients.ar : recipe.ingredients.en).map((ing, i) => (
-                    <li key={i} className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)]" style={{ color: "var(--color-text)" }}>
+                    <li key={i} className="flex items-center gap-[var(--space-2)] text-300" style={{ color: "var(--color-text)" }}>
                       <span className="w-1.5 h-1.5 rounded-pill shrink-0" style={{ background: "var(--color-gold)" }} />
                       {ing}
                     </li>
@@ -66,14 +66,14 @@ export default async function RecipesPage({ params }: { params: { locale: string
                 </ul>
               </div>
               <div>
-                <h3 className="flex items-center gap-[var(--space-2)] text-[var(--fs-300)] font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
+                <h3 className="flex items-center gap-[var(--space-2)] text-300 font-bold mb-[var(--space-3)]" style={{ color: "var(--color-saddle)" }}>
                   <Icon name="format_list_numbered" size="sm" /> {t("steps")}
                 </h3>
                 <ol className="flex flex-col gap-[var(--space-3)]">
                   {(locale === "ar" ? recipe.steps.ar : recipe.steps.en).map((step, i) => (
-                    <li key={i} className="flex gap-[var(--space-3)] text-[var(--fs-300)]">
+                    <li key={i} className="flex gap-[var(--space-3)] text-300">
                       <span
-                        className="w-[var(--space-6)] h-[var(--space-6)] rounded-pill shrink-0 flex items-center justify-center text-[var(--fs-200)] font-black"
+                        className="w-[var(--space-6)] h-[var(--space-6)] rounded-pill shrink-0 flex items-center justify-center text-200 font-black"
                         style={{ background: "var(--color-saddle)", color: "var(--text-body)" }}
                       >
                         {i + 1}
@@ -84,7 +84,7 @@ export default async function RecipesPage({ params }: { params: { locale: string
                 </ol>
               </div>
             </div>
-            <video className="mt-[var(--space-6)] w-full rounded-[var(--radius-2xl)]" src={`/${recipe.video}`} poster={`/${recipe.image}`} controls preload="none" />
+            <video className="mt-[var(--space-6)] w-full rounded-[var(--radius-2)]" src={`/${recipe.video}`} poster={`/${recipe.image}`} controls preload="none" />
           </article>
         ))}
       </div>

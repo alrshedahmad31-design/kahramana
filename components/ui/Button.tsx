@@ -7,15 +7,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "min-h-[var(--tap-min)] px-6 fs-400 bg-gold text-coffee hover:brightness-105 shadow-1",
-        secondary: "min-h-[var(--tap-min)] px-6 fs-400 bg-saddle text-white hover:brightness-110",
-        ghost: "min-h-[var(--tap-min)] px-6 fs-400 bg-transparent text-saddle border-2 border-saddle hover:bg-saddle hover:text-white",
+        primary: "min-h-[var(--tap-min)] px-6 text-400 bg-gold text-coffee hover:brightness-105 shadow-1",
+        secondary: "min-h-[var(--tap-min)] px-6 text-400 bg-saddle text-white hover:brightness-110",
+        ghost: "min-h-[var(--tap-min)] px-6 text-400 bg-transparent text-saddle border-2 border-saddle hover:bg-saddle hover:text-white",
         icon: "w-[var(--tap-min)] h-[var(--tap-min)] rounded-1 bg-walnut text-body shadow-1",
       },
       size: {
-        sm: "min-h-[40px] px-4 fs-300",
-        md: "min-h-[var(--tap-min)] px-6 fs-400",
-        lg: "min-h-[56px] px-8 fs-500",
+        sm: "min-h-[var(--tap-min)] px-4 text-300",
+        md: "min-h-[var(--tap-min)] px-6 text-400",
+        lg: "min-h-[var(--space-10)] px-8 text-500",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },

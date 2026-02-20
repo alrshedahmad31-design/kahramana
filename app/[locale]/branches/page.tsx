@@ -51,8 +51,8 @@ export default async function BranchesPage({ params }: { params: { locale: strin
           style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
 
         <div className="max-w-screen-md mx-auto px-[var(--space-6)] text-center relative z-[var(--z-base)]">
-          <h2 className="text-[var(--fs-800)] font-black mb-[var(--space-6)]" style={{ color: "var(--color-text)" }}>{labels.talk_title}</h2>
-          <p className="text-[var(--fs-300)] leading-relaxed opacity-90 text-justify" style={{ color: "var(--color-text-muted)" }}>
+          <h2 className="text-800 font-black mb-[var(--space-6)]" style={{ color: "var(--color-text)" }}>{labels.talk_title}</h2>
+          <p className="text-300 leading-relaxed opacity-90 text-justify" style={{ color: "var(--color-text-muted)" }}>
             {labels.talk_body}
           </p>
         </div>
@@ -74,7 +74,7 @@ export default async function BranchesPage({ params }: { params: { locale: strin
         {/* FAQ Section */}
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-[var(--space-12)]">
-            <h2 className="text-[var(--fs-700)] md:text-[var(--fs-900)] font-black mb-[var(--space-4)] liquid-gold">
+            <h2 className="text-700 md:text-900 font-black mb-[var(--space-4)] liquid-gold">
               {t.raw("faq.title")}
             </h2>
             <div className="w-[var(--space-16)] h-1 bg-[var(--color-gold)] mx-auto rounded-pill" />
@@ -84,14 +84,14 @@ export default async function BranchesPage({ params }: { params: { locale: strin
             {(t.raw("faq.items") as any[]).map((item, i) => (
               <details
                 key={i}
-                className="group p-[var(--space-6)] rounded-[var(--radius-3xl)] border transition-colors hover:border-[var(--color-gold)]/40 bg-[var(--color-surface)] relative overflow-hidden"
+                className="group p-[var(--space-6)] rounded-[var(--radius-3)] border transition-colors hover:border-[var(--color-gold)]/40 bg-[var(--color-surface)] relative overflow-hidden"
                 style={{ borderColor: "var(--color-border)" }}
               >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none grayscale invert"
                   style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
 
-                <summary className="flex items-center justify-between cursor-pointer font-bold text-[var(--fs-300)] list-none relative z-[var(--z-base)]">
+                <summary className="flex items-center justify-between cursor-pointer font-bold text-300 list-none relative z-[var(--z-base)]">
                   <span className="pe-[var(--space-8)]">{item.q}</span>
                   <span className="ms-[var(--space-2)] transition-transform group-open:rotate-180 opacity-60">
                     <Icon name="expand_more" size="sm" />

@@ -42,7 +42,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
   ];
 
   return (
-    <div className="bg-[var(--color-bg)]">
+    <div className="bg-[var(--color-coffee)]">
       <Hero
         title={t("hero_title")}
         subtitle={t("hero_subtitle")}
@@ -60,7 +60,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-6)] items-center relative z-10">
           {/* Founder Image Column */}
           <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] overflow-hidden shadow-2xl border border-[var(--color-border)]" style={{ borderRadius: "var(--radius-2xl)" }}>
+            <div className="relative aspect-[4/5] overflow-hidden shadow-2xl border border-[var(--border-1)]" style={{ borderRadius: "var(--radius-4)" }}>
               <Image
                 src="/assets/founder/founder.webp"
                 alt={t("founder_name")}
@@ -68,7 +68,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 500px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-coffee)]/80 to-transparent" />
               <div className="absolute bottom-[var(--space-6)] inset-x-[var(--space-6)] text-white">
                 <p className="font-black text-[var(--fs-500)] liquid-gold">{t("founder_name")}</p>
                 <p className="text-[var(--fs-300)] opacity-90">{t("founder_title")}</p>
@@ -82,10 +82,10 @@ export default async function StoryPage({ params }: { params: { locale: string }
           {/* Founder Content Column */}
           <div className="lg:col-span-7 space-y-[var(--space-8)]">
             <div className="space-y-[var(--space-4)]">
-              <h2 className="text-[var(--fs-200)] font-black uppercase tracking-widest text-[var(--color-primary)]">
+              <h2 className="text-[var(--fs-200)] font-black uppercase tracking-widest text-[var(--color-gold)]">
                 {t("founder_title")}
               </h2>
-              <h3 className="text-[var(--fs-700)] md:text-[var(--fs-800)] font-black leading-tight text-[var(--color-text)]">
+              <h3 className="text-[var(--fs-700)] md:text-[var(--fs-800)] font-black leading-tight text-[var(--text-primary)]">
                 {t("founder_name")}
               </h3>
               <div className="w-[var(--space-6)] h-[var(--border-thick)] bg-[var(--color-gold)] rounded-pill" />
@@ -97,9 +97,9 @@ export default async function StoryPage({ params }: { params: { locale: string }
               <p>{t("founder_bio_3")}</p>
             </div>
 
-            <div className="relative p-[var(--space-8)] rounded-[var(--radius-3xl)] bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl mt-[var(--space-10)] italic">
+            <div className="relative p-[var(--space-8)] rounded-[var(--radius-3xl)] bg-[var(--color-surface)] border border-[var(--color-border)] shadow-3 mt-[var(--space-10)] italic">
               <Icon name="format_quote" className="absolute -top-4 -start-4 w-[var(--space-12)] h-[var(--space-12)] text-[var(--color-gold)] opacity-30" filled />
-              <p className="text-[var(--fs-500)] md:text-[var(--fs-600)] font-bold leading-snug text-[var(--color-text)] text-center">
+              <p className="text-[var(--fs-500)] md:text-[var(--fs-600)] font-bold leading-snug text-[var(--text-primary)] text-center">
                 {t("founder_quote")}
               </p>
             </div>
@@ -108,7 +108,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
       </section>
 
       {/* --- Philosophy & Grid Section --- */}
-      <section className="bg-[var(--color-surface-alt)] py-[var(--space-10)] relative overflow-hidden">
+      <section className="bg-[var(--bg-surface)] py-[var(--space-10)] relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale invert"
           style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
@@ -128,7 +128,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
               <div className="w-[var(--space-14)] h-[var(--space-14)] rounded-[var(--radius-2xl)] bg-[var(--color-gold)]/10 flex items-center justify-center mb-[var(--space-6)] text-[var(--color-gold)]">
                 <Icon name="history" size="lg" />
               </div>
-              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--color-text)]">{t("symbolism_title")}</h4>
+              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--text-primary)]">{t("symbolism_title")}</h4>
               <p className="text-[var(--color-text-muted)] leading-relaxed text-justify">{t("symbolism_text")}</p>
             </div>
 
@@ -137,7 +137,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
               <div className="w-[var(--space-14)] h-[var(--space-14)] rounded-[var(--radius-2xl)] bg-[var(--color-gold)]/10 flex items-center justify-center mb-[var(--space-6)] text-[var(--color-gold)]">
                 <Icon name="restaurant" size="lg" />
               </div>
-              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--color-text)]">{t("philosophy_title")}</h4>
+              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--text-primary)]">{t("philosophy_title")}</h4>
               <p className="text-[var(--color-text-muted)] leading-relaxed text-justify">{t("philosophy_text")}</p>
             </div>
 
@@ -146,7 +146,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
               <div className="w-[var(--space-14)] h-[var(--space-14)] rounded-[var(--radius-2xl)] bg-[var(--color-gold)]/10 flex items-center justify-center mb-[var(--space-6)] text-[var(--color-gold)]">
                 <Icon name="explore" size="lg" />
               </div>
-              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--color-text)]">{t("journey_title")}</h4>
+              <h4 className="text-[var(--fs-500)] font-bold mb-[var(--space-4)] text-[var(--text-primary)]">{t("journey_title")}</h4>
               <p className="text-[var(--color-text-muted)] leading-relaxed text-justify">{t("journey_text")}</p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
           {pillars.map((pillar, idx) => (
             <div key={idx} className="flex flex-col items-center text-center p-[var(--space-8)] rounded-[var(--radius-3xl)] border border-[var(--color-border)] bg-[var(--color-surface)] transition-[colors,transform] hover:border-[var(--color-gold)]/40 hover:-translate-y-1 duration-[var(--motion-mid)]">
               <Icon name={pillar.iconName} size="lg" className="text-[var(--color-gold)] mb-[var(--space-6)] opacity-80" />
-              <h5 className="font-black text-[var(--fs-400)] mb-[var(--space-3)] text-[var(--color-text)]">{pillar.title}</h5>
+              <h5 className="font-black text-[var(--fs-400)] mb-[var(--space-3)] text-[var(--text-primary)]">{pillar.title}</h5>
               <p className="text-[var(--fs-300)] text-[var(--color-text-muted)] leading-relaxed text-justify">{pillar.text}</p>
             </div>
           ))}
@@ -180,7 +180,7 @@ export default async function StoryPage({ params }: { params: { locale: string }
             className="object-cover"
             sizes="1200px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/90 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-coffee)]/90 via-transparent to-transparent" />
           <div className="absolute bottom-[var(--space-12)] inset-x-[var(--space-12)] text-center md:text-start">
             <p className="text-white/80 font-medium tracking-[0.2em] uppercase text-[var(--fs-200)] mb-[var(--space-4)]">{t("hero_title")}</p>
             <h2 className="text-[var(--fs-700)] md:text-[var(--fs-900)] font-black text-white leading-tight max-w-2xl">{t("hero_subtitle")}</h2>

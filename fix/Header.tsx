@@ -51,12 +51,14 @@ export default function Header() {
       {/* ── Top Bar ────────────────────────────────────────────── */}
       <header
         className={cn(
-          "fixed top-0 inset-x-0 z-nav transition-[background-color,padding,box-shadow,height,border-color] duration-[var(--motion-slow)]",
-          scrolled ? "shadow-1 bg-walnut/95 backdrop-blur-xl py-[var(--space-1)]" : "shadow-none bg-transparent py-[var(--space-2)]"
+          "fixed top-0 inset-x-0 transition-[background-color,padding,box-shadow,height,border-color] duration-[var(--motion-slow)]",
+          scrolled ? "shadow-[var(--shadow-1)] backdrop-blur-xl py-[var(--space-1)]" : "shadow-none py-[var(--space-2)]"
         )}
         style={{
+          zIndex: "var(--z-nav)",
           borderBottom: `1px solid ${scrolled ? "var(--border-1)" : "transparent"}`,
-          height: scrolled ? "var(--nav-top-h, 60px)" : "calc(var(--nav-top-h, 60px) + 8px)",
+          background: scrolled ? "color-mix(in srgb, var(--bg-primary) 95%, transparent)" : "transparent",
+          height: scrolled ? "var(--nav-top-h)" : "calc(var(--nav-top-h) + 8px)",
         }}
       >
         <div className="max-w-screen-xl mx-auto h-full flex items-center justify-between px-[var(--space-4)] md:px-[var(--space-6)]">
@@ -66,7 +68,10 @@ export default function Header() {
             href={`/${locale}`}
             className="flex items-center no-underline group shrink-0"
           >
-            <div className="relative w-[var(--space-7)] h-[var(--space-7)] transition-transform group-hover:scale-105 duration-[var(--motion-slow)]">
+            <div
+              className="relative transition-transform group-hover:scale-105 duration-[var(--motion-slow)]"
+              style={{ width: "var(--space-7)", height: "var(--space-7)" }}
+            >
               <Image
                 src="/assets/brand/logo.webp"
                 alt="Kahramana"
@@ -80,7 +85,12 @@ export default function Header() {
           {/* Desktop Nav (Centered) */}
           <div className="hidden md:flex flex-1 justify-center">
             <nav
-              className="flex items-center gap-1 px-1.5 py-1 rounded-pill border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/50 shadow-1 backdrop-blur-md"
+              className="flex items-center gap-1 px-1.5 py-1 rounded-[var(--radius-pill)] backdrop-blur-md"
+              style={{
+                border: "1px solid var(--border-subtle)",
+                background: "color-mix(in srgb, var(--bg-secondary) 50%, transparent)",
+                boxShadow: "var(--shadow-1)",
+              }}
               aria-label="Main navigation"
             >
               {NAV_ITEMS.map(({ key, path }) => {
@@ -89,12 +99,14 @@ export default function Header() {
                   <Link
                     key={key}
                     href={`/${locale}${path}`}
-                    className={cn(
-                      "relative px-4 py-2 rounded-pill text-300 font-bold no-underline transition-[background-color,color,transform] duration-2",
-                      active
-                        ? "bg-gold text-gold-fg shadow-1 active:scale-95"
-                        : "text-muted hover:bg-white-mid"
-                    )}
+                    className="relative px-4 py-2 rounded-[var(--radius-pill)] no-underline transition-[background-color,color,transform] duration-[var(--motion-mid)] active:scale-95"
+                    style={{
+                      fontSize: "var(--fs-300)",
+                      fontWeight: "var(--fw-bold)",
+                      color: active ? "#ffffff" : "rgba(255,255,255,0.8)",
+                      background: active ? "var(--color-gold)" : "transparent",
+                      boxShadow: active ? "var(--shadow-1)" : "none",
+                    }}
                   >
                     {t(key as any)}
                   </Link>
@@ -108,8 +120,15 @@ export default function Header() {
             {/* Lang */}
             <button
               onClick={switchLocale}
-              className="hidden sm:inline-flex items-center gap-2 px-4 rounded-pill text-300 font-bold border border-1 bg-surface text-body transition-[background-color,transform] duration-2 hover:bg-white-mid active:scale-95"
-              style={{ height: "var(--tap-min)" }}
+              className="hidden sm:inline-flex items-center gap-2 px-4 rounded-[var(--radius-pill)] transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white/10 active:scale-95"
+              style={{
+                height: "var(--tap-min)",
+                fontSize: "var(--fs-300)",
+                fontWeight: "var(--fw-bold)",
+                border: "1px solid var(--border-1)",
+                background: "var(--bg-surface)",
+                color: "var(--text-body)",
+              }}
             >
               <Icon name="language" size="sm" />
               {t("lang")}
@@ -119,11 +138,15 @@ export default function Header() {
             <a
               href="https://www.talabat.com/ar/bahrain/kahramanat-baghdad-restaurant"
               target="_blank" rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 font-bold no-underline rounded-pill bg-primary text-coffee transition-[filter,transform,box-shadow] duration-2 hover:brightness-105 active:scale-95 shadow-1"
+              className="hidden sm:inline-flex items-center gap-2 no-underline rounded-[var(--radius-pill)] transition-[filter,transform,box-shadow] duration-[var(--motion-mid)] hover:brightness-105 active:scale-95"
               style={{
                 height: "var(--tap-min)",
                 paddingInline: "var(--space-6)",
                 fontSize: "var(--fs-300)",
+                fontWeight: "var(--fw-black)",
+                background: "var(--color-gold)",
+                color: "var(--color-coffee)",
+                boxShadow: "var(--shadow-1)",
               }}
             >
               <Icon name="delivery_dining" />
@@ -133,31 +156,44 @@ export default function Header() {
             {/* Cart Button */}
             <button
               id="cart-toggle"
-              className="inline-flex items-center justify-center rounded-pill transition-[background-color,transform] duration-2 hover:bg-white-mid active:scale-95 shadow-1 relative"
+              className="inline-flex items-center justify-center rounded-[var(--radius-pill)] transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white/10 active:scale-95 relative"
               style={{
                 width: "var(--tap-min)",
                 height: "var(--tap-min)",
                 color: "var(--color-gold)",
                 background: "var(--bg-muted)",
-                border: "1px solid var(--border-1)"
+                border: "1px solid var(--border-1)",
+                boxShadow: "var(--shadow-1)",
               }}
               // @ts-ignore
               onClick={() => window.openCart?.()}
               aria-label={locale === "ar" ? "حقيبة التسوق" : "Shopping Cart"}
             >
               <Icon name="shopping_basket" />
-              <span className="kh-cart-badge absolute -top-1 -right-1 flex items-center justify-center bg-primary text-walnut text-100 font-black w-[var(--space-4)] h-[var(--space-4)] rounded-pill border-2 border-walnut pointer-events-none">0</span>
+              <span
+                className="cart-badge absolute -top-1 -right-1 flex items-center justify-center rounded-[var(--radius-pill)] pointer-events-none hidden"
+                style={{
+                  width: "var(--space-4)",
+                  height: "var(--space-4)",
+                  background: "var(--color-gold)",
+                  color: "var(--dark-walnut)",
+                  fontSize: "var(--fs-100)",
+                  fontWeight: "var(--fw-black)",
+                  border: "2px solid var(--dark-walnut)",
+                }}
+              >0</span>
             </button>
 
             {/* Hamburger (Mobile only) */}
             <button
-              className="md:hidden inline-flex items-center justify-center rounded-pill transition-[background-color,transform] duration-2 hover:bg-white-mid active:scale-95 shadow-1"
+              className="md:hidden inline-flex items-center justify-center rounded-[var(--radius-pill)] transition-[background-color,transform] duration-[var(--motion-mid)] hover:bg-white/10 active:scale-95"
               style={{
                 width: "var(--tap-min)",
                 height: "var(--tap-min)",
                 color: "var(--color-gold)",
                 background: "var(--bg-surface)",
-                border: "1px solid var(--border-1)"
+                border: "1px solid var(--border-1)",
+                boxShadow: "var(--shadow-1)",
               }}
               onClick={() => setOpen(true)}
               aria-label={locale === "ar" ? "فتح القائمة" : "Open menu"}
@@ -173,10 +209,14 @@ export default function Header() {
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 z-drawer md:hidden transition-opacity duration-3",
+          "fixed inset-0 md:hidden transition-opacity duration-[var(--motion-slow)]",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
-        style={{ background: "color-mix(in srgb, var(--coffee-bean) 70%, transparent)", backdropFilter: "blur(8px)" }}
+        style={{
+          zIndex: "var(--z-drawer)",
+          background: "color-mix(in srgb, var(--coffee-bean) 70%, transparent)",
+          backdropFilter: "blur(8px)",
+        }}
         onClick={() => setOpen(false)}
       />
 
@@ -184,15 +224,17 @@ export default function Header() {
       <div
         role="dialog" aria-modal="true"
         className={cn(
-          "fixed top-0 bottom-0 z-modal w-[var(--nav-drawer-w)] flex flex-col md:hidden transition-transform duration-[var(--motion-mid)] ease-out",
+          "fixed top-0 bottom-0 flex flex-col md:hidden transition-transform duration-[var(--motion-mid)] ease-out",
           locale === "ar"
             ? cn("right-0", open ? "translate-x-0" : "translate-x-full")
             : cn("left-0", open ? "translate-x-0" : "-translate-x-full")
         )}
         style={{
+          zIndex: "var(--z-modal)",
+          width: "var(--nav-drawer-w)",
           background: "var(--dark-walnut)",
           boxShadow: "var(--shadow-3)",
-          paddingBottom: "env(safe-area-inset-bottom,0px)",
+          paddingBottom: "env(safe-area-inset-bottom, 0px)",
         }}
       >
         {/* Drawer header */}
@@ -209,13 +251,16 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className="font-black text-[1rem]" style={{ color: "var(--text-primary)" }}>
+            <span
+              className="font-black"
+              style={{ fontSize: "var(--fs-400)", color: "var(--text-primary)" }}
+            >
               {locale === "ar" ? "كهرمانة بغداد" : "Kahramana Baghdad"}
             </span>
           </div>
           <button
             onClick={() => setOpen(false)}
-            className="inline-flex items-center justify-center rounded-pill hover:bg-white-mid transition-colors duration-2"
+            className="inline-flex items-center justify-center rounded-[var(--radius-pill)] hover:bg-white/10 transition-colors duration-[var(--motion-mid)]"
             style={{ width: "var(--tap-min)", height: "var(--tap-min)", color: "var(--text-muted)" }}
           >
             <Icon name="close" />
@@ -223,15 +268,16 @@ export default function Header() {
         </div>
 
         {/* Links */}
-        <nav className="flex flex-col flex-1 overflow-y-auto px-4 py-4 gap-1">
+        <nav className="flex flex-col flex-1 overflow-y-auto px-[var(--space-4)] py-[var(--space-4)] gap-1">
           {NAV_ITEMS.map(({ key, path }) => {
             const active = isActive(path);
             return (
               <Link
                 key={key}
                 href={`/${locale}${path}`}
-                className="flex items-center gap-3 px-4 py-3.5 rounded-2 transition-[background-color,color] duration-2 font-semi no-underline"
+                className="flex items-center gap-3 px-4 py-3.5 rounded-[var(--radius-2)] transition-[background-color,color] duration-[var(--motion-mid)] no-underline"
                 style={{
+                  fontWeight: "var(--fw-semi)",
                   color: active ? "var(--color-gold)" : "var(--text-body)",
                   background: active ? "var(--bg-surface)" : "transparent",
                 }}
@@ -250,7 +296,7 @@ export default function Header() {
                 {t(key as any)}
                 {active && (
                   <span
-                    className="ms-auto w-1.5 h-1.5 rounded-pill"
+                    className="ms-auto w-1.5 h-1.5 rounded-[var(--radius-pill)]"
                     style={{ background: "var(--color-gold)" }}
                   />
                 )}
@@ -260,15 +306,19 @@ export default function Header() {
         </nav>
 
         {/* Bottom actions */}
-        <div className="p-4 flex flex-col gap-2.5" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+        <div
+          className="p-[var(--space-4)] flex flex-col gap-2.5"
+          style={{ borderTop: "1px solid var(--border-subtle)" }}
+        >
           <button
             onClick={switchLocale}
-            className="flex items-center justify-center gap-2 rounded-2 border transition-colors duration-2 hover:bg-white/10 font-semi"
+            className="flex items-center justify-center gap-2 rounded-[var(--radius-2)] transition-colors duration-[var(--motion-mid)] hover:bg-white/10"
             style={{
               height: "var(--tap-min)",
-              borderColor: "var(--border-1)",
+              fontWeight: "var(--fw-semi)",
+              border: "1px solid var(--border-1)",
               color: "var(--text-body)",
-              background: "var(--bg-surface)"
+              background: "var(--bg-surface)",
             }}
           >
             <Icon name="language" size="sm" />
@@ -277,9 +327,10 @@ export default function Header() {
           <a
             href="https://www.talabat.com/ar/bahrain/kahramanat-baghdad-restaurant"
             target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-2 font-black no-underline transition-[filter,transform] duration-2 hover:brightness-105 active:scale-95"
+            className="flex items-center justify-center gap-2 rounded-[var(--radius-2)] no-underline transition-[filter,transform] duration-[var(--motion-mid)] hover:brightness-105 active:scale-95"
             style={{
               height: "var(--tap-min)",
+              fontWeight: "var(--fw-black)",
               background: "var(--color-gold)",
               color: "var(--color-coffee)",
               boxShadow: "var(--glow-gold)",

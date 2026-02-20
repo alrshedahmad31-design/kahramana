@@ -81,7 +81,7 @@ export function ModalBody({
                         role="dialog"
                         aria-modal="true"
                         className={cn(
-                            "relative z-[calc(var(--z-modal)+1)] w-full max-w-2xl overflow-hidden rounded-[var(--radius-3xl)] border-[var(--border-thin)] border-white/10 bg-[var(--bg-primary)] shadow-[var(--shadow-3)]",
+                            "relative z-[var(--z-modal-content)] w-full max-w-2xl overflow-hidden rounded-[var(--radius-3)] border-[var(--border-thin)] border-[var(--border-subtle)] bg-[var(--bg-primary)] shadow-[var(--shadow-3)]",
                             className
                         )}
                         initial={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -93,7 +93,7 @@ export function ModalBody({
                         <button
                             type="button"
                             onClick={() => setOpen(false)}
-                            className="absolute right-[var(--space-4)] top-[var(--space-4)] z-[calc(var(--z-modal)+2)] inline-flex h-[var(--space-12)] w-[var(--space-12)] items-center justify-center rounded-pill bg-white/5 text-white/60 transition hover:bg-white/10 hover:text-white"
+                            className="absolute right-[var(--space-4)] top-[var(--space-4)] z-[var(--z-modal-close)] inline-flex h-[var(--space-12)] w-[var(--space-12)] items-center justify-center rounded-pill bg-[var(--bg-white-mid)] text-[var(--text-white-subtle)] transition hover:bg-[var(--bg-white-mid)] hover:text-[var(--text-primary)]"
                             aria-label="Close"
                         >
                             <Icon name="close" size="sm" />

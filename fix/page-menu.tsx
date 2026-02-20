@@ -27,15 +27,23 @@ export default async function MenuPage({ params }: { params: { locale: string } 
         size="sm"
       />
 
-      <div id="menu-list" className="px-[var(--space-4)] max-w-screen-lg mx-auto mt-[var(--space-7)] pb-[var(--space-6)]">
+      {/* FIX: was px-4 mt-10 pb-6 (raw Tailwind/hardcoded) → now uses design tokens */}
+      <div
+        id="menu-list"
+        className="max-w-screen-lg mx-auto"
+        style={{
+          paddingInline: "var(--space-4)",
+          marginTop: "var(--space-9)",
+          paddingBottom: "var(--space-5)",
+        }}
+      >
         {(() => {
-          // Transform new grouped menuData structure
           const categories = menuData.map((group) => {
             const id = group.category.en.toLowerCase().replace(/\s+/g, "-");
             return {
               id,
               name: group.category,
-              icon: "restaurant_menu", // Standardized name
+              icon: "restaurant_menu",
             };
           });
 
@@ -46,7 +54,6 @@ export default async function MenuPage({ params }: { params: { locale: string } 
               categoryId,
               name: item.name,
               description: item.description,
-              // Map new fields to component-expected fields
               price: item.price_bhd,
               image: item.image_url.startsWith("/") ? item.image_url.slice(1) : item.image_url,
               featured: (item as any).featured || (item as any).signature || false,

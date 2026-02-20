@@ -61,19 +61,17 @@ export default function MenuItemCard({
 
   const inc = () => {
     window.addToCart?.(item.id, name, item.price, imgSrc);
-    setQty((q) => q + 1);
   };
 
   const dec = () => {
     const next = Math.max(0, qty - 1);
     window.setCartQty?.(item.id, next);
-    setQty(next);
   };
 
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-[var(--radius-3xl)] border bg-[var(--bg-tertiary)]/30 shadow-[var(--shadow-1)] transition-[transform,border-color] duration-[var(--motion-mid)] hover:-translate-y-0.5 hover:border-[var(--color-gold)]/30",
+        "group relative overflow-hidden rounded-[var(--radius-3)] border bg-[var(--bg-secondary)]/30 shadow-1 transition-[transform,border-color] duration-[var(--motion-mid)] hover:-translate-y-0.5 hover:border-[var(--color-gold)]/30",
         className
       )}
       style={{ borderColor: "var(--border-subtle)" }}
@@ -89,7 +87,7 @@ export default function MenuItemCard({
 
         {item.featured ? (
           <div
-            className="absolute top-[var(--space-3)] inline-flex items-center rounded-pill px-[var(--space-3)] py-[var(--space-1)] text-[var(--fs-100)] font-extrabold"
+            className="absolute top-[var(--space-3)] inline-flex items-center rounded-pill px-[var(--space-3)] py-[var(--space-1)] text-100 font-extrabold"
             style={{
               background: "var(--color-gold)",
               color: "var(--bg-primary)",
@@ -104,8 +102,8 @@ export default function MenuItemCard({
       </div>
 
       <div className="p-[var(--space-4)]">
-        <h3 className="text-[var(--fs-400)] font-extrabold line-clamp-2" style={{ color: "var(--text-on-dark)" }}>{name}</h3>
-        <p className="mt-[var(--space-1)] text-[var(--fs-200)] line-clamp-2" style={{ color: "var(--color-text-muted)" }}>{description}</p>
+        <h3 className="text-400 font-extrabold line-clamp-2" style={{ color: "var(--text-on-dark)" }}>{name}</h3>
+        <p className="mt-[var(--space-1)] text-200 line-clamp-2" style={{ color: "var(--color-text-muted)" }}>{description}</p>
 
         <div className="mt-[var(--space-3)] flex items-center justify-between gap-[var(--space-3)]">
           <div className="font-extrabold" style={{ color: "var(--color-text)" }}>
@@ -113,7 +111,7 @@ export default function MenuItemCard({
           </div>
 
           <div
-            className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-2xl)] border px-[var(--space-2)] py-[var(--space-2)]"
+            className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-2)] border px-[var(--space-2)] py-[var(--space-2)]"
             style={{
               borderColor: "var(--border-subtle)",
               background: "rgba(255,255,255,.04)",
@@ -128,7 +126,7 @@ export default function MenuItemCard({
               }}
               disabled={qty <= 0}
               className={cn(
-                "flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2xl)] border text-[var(--text-on-dark)] transition active:scale-95 duration-[var(--motion-fast)]",
+                "flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2)] border text-[var(--text-primary)] transition active:scale-95 duration-[var(--motion-fast)]",
                 qty <= 0 ? "opacity-40 cursor-not-allowed" : "hover:bg-white/5"
               )}
               style={{ borderColor: "var(--border-subtle)" }}
@@ -138,7 +136,7 @@ export default function MenuItemCard({
               −
             </button>
 
-            <div className="min-w-6 text-center text-[var(--fs-200)] font-extrabold" style={{ color: "var(--text-on-dark)" }}>
+            <div className="min-w-6 text-center text-200 font-extrabold" style={{ color: "var(--text-on-dark)" }}>
               {qty}
             </div>
 
@@ -148,11 +146,11 @@ export default function MenuItemCard({
                 e.stopPropagation();
                 inc();
               }}
-              className="flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2xl)] transition active:scale-95 duration-[var(--motion-fast)] hover:shadow-[var(--shadow-gold)]"
+              className="flex h-[var(--space-9)] w-[var(--space-9)] items-center justify-center rounded-[var(--radius-2)] transition active:scale-95 duration-[var(--motion-fast)] hover:shadow-glow"
               style={{
                 background: "var(--color-gold)",
                 color: "var(--bg-primary)",
-                boxShadow: "var(--shadow-gold)"
+                boxShadow: "var(--glow-gold)"
               }}
               aria-label={locale === "ar" ? "زيادة" : "Increase"}
               title={locale === "ar" ? "زيادة" : "Increase"}
