@@ -131,7 +131,11 @@ export default async function GalleryPage({ params }: { params: { locale: string
     ];
 
     return (
-        <main className="min-h-screen pb-[var(--space-16)]" style={{ background: "var(--bg-primary)" }}>
+        <main className="min-h-screen pb-[var(--space-16)] relative transition-colors" style={{ background: "var(--bg-primary)" }}>
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale invert"
+                style={{ backgroundImage: 'url("/assets/pattern/arabic-pattern.webp")', backgroundSize: 'var(--pattern-size-lg)' }} />
+
             <Hero
                 title={locale === "ar" ? "معرض الصور" : "Gallery"}
                 subtitle={locale === "ar" ? "قصة تُروى بالألوان والمطعم" : "A story told in colors and flavors"}
